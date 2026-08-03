@@ -1,0 +1,6 @@
+benchmark,target_SMR,avoidable_deaths,pct_of_base
+structural median (SMR p50),1.03,12415,6.4
+structural mean (SMR = 1),1.0,14724,7.6
+best 25% (SMR p25),0.9,26757,13.7
+best quintile (SMR p20),0.87,31128,16.0
+best decile (SMR p10),0.81,41195,21.2

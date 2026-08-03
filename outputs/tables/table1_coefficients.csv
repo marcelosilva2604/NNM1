@@ -1,0 +1,7 @@
+term,model_A,model_B
+IDHM income sub-index,0.38 (0.33-0.44),0.37 (0.32-0.43)
+IDHM education sub-index,0.63 (0.56-0.72),0.70 (0.62-0.80)
+log(population),1.02 (1.02-1.03),1.03 (1.02-1.04)
+Distance to nearest NICU (km),not in model,1.00 (1.00-1.00)
+"NICU beds per 1,000 births",not in model,1.02 (1.00-1.04)
+"Primary-care units per 1,000 births",not in model,1.00 (1.00-1.01)
