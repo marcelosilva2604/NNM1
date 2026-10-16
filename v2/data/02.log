@@ -1,0 +1,26 @@
+/Users/marcelocarvalhoesilva/project/artigos doutorado/artigo 2/.venv/lib/python3.12/site-packages/libpysal/weights/contiguity.py:354: UserWarning: The weights matrix is not fully connected: 
+ There are 9 disconnected components.
+ There are 4 islands with ids: 802, 1524, 3498, 5564.
+  W.__init__(self, neighbors, ids=ids, **kw)
+Municipal adjacency (queen contiguity, welded)
+==================================================
+municipalities       : 5565
+invalid geometries   : 46 (repaired)
+undirected pairs     : 16,129
+mean degree          : 5.80 (min 1, max 23)
+without polygon      : 1 ['220672'] (point from CNES, 3 nearest neighbours)
+queen islands        : 4
+joins added          : 10
+    joined 220672 <-> 220330  (17 km)
+    joined 220672 <-> 221100  (22 km)
+    joined 220672 <-> 220558  (26 km)
+    joined 260545 <-> 240750  (375 km)
+    joined 352040 <-> 351050  (29 km)
+    joined 530010 <-> 520549  (38 km)
+    joined 171515 <-> 520490  (11 km)
+    joined 172030 <-> 211153  (13 km)
+    joined 412290 <-> 350500  (13 km)
+    joined 522130 <-> 312790  (16 km)
+zero eigenvalues of Q: 1 (1 = connected)
+BYM2 scaling factor  : 3.5829
+elapsed              : 10s

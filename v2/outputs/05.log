@@ -1,0 +1,56 @@
+{
+ "sigma_u": {
+  "median": 0.36941551577257836,
+  "lo95": 0.33527378623580056,
+  "hi95": 0.40697767626432974
+ },
+ "rho": {
+  "median": 0.9517391197104907,
+  "lo95": 0.9269277316306993,
+  "hi95": 0.9717703434279086
+ },
+ "n_above_10": 112,
+ "n_below_10": 48,
+ "n_p_gt1_25_ge95": 25,
+ "brazil": {
+  "unit": "Brazil",
+  "municipalities": 5565,
+  "deaths": 259965,
+  "expected_median": 258279.62055363777,
+  "gross_median": 15789.045491233988,
+  "gross_lo95": 15038.77739675975,
+  "gross_hi95": 16573.16575916167,
+  "net_median": 1669.4628037306193,
+  "net_lo95": -137.15619719655282,
+  "net_hi95": 3340.8298019417152,
+  "above10_median": 7379.7932703715305,
+  "above10_lo95": 6832.823142266102,
+  "above10_hi95": 7970.292171538878,
+  "n_above": 112,
+  "n_below": 48,
+  "excess_in_above_median": 6105.830536515641,
+  "excess_in_above_lo95": 5739.527139345668,
+  "excess_in_above_hi95": 6480.111577002295,
+  "gross_share_of_deaths": 6.073527394546954
+ },
+ "v1_flagged": 340,
+ "v1_flagged_now_above": 97,
+ "above_not_flagged_v1": 15,
+ "ppc": {
+  "share_outside_95pp": 0.011500449236298293,
+  "share_zero_obs": 0.015813117699910152,
+  "share_zero_pp": 0.017905660377358492,
+  "max_obs": 12293,
+  "max_pp_median": 12294.0,
+  "var_mean_ratio_obs": 1195.0015183362593,
+  "var_mean_ratio_pp_median": 1194.7122748380739
+ },
+ "mde_asymptote": 1.3934296325864142
+}
+        unit  deaths  gross_median  gross_lo95  gross_hi95  net_median  net_lo95  net_hi95  n_above  n_below  excess_in_above_median
+      Brazil  259965       15789.0     15039.0     16573.0      1669.0    -137.0    3341.0      112       48                  6106.0
+       North   33562        2497.0      2222.0      2786.0       863.0     389.0    1322.0       21        4                  1581.0
+   Northeast   82490        6997.0      6574.0      7451.0      2644.0    2010.0    3288.0       76       29                  3607.0
+Central-West   21562        1117.0       928.0      1318.0        18.0    -312.0     341.0        3        2                   190.0
+   Southeast   92634        3828.0      3476.0      4174.0     -1093.0   -2137.0    -106.0        8        9                   586.0
+       South   29717        1353.0      1173.0      1538.0      -758.0   -1099.0    -416.0        4        4                   145.0

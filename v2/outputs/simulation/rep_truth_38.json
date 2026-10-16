@@ -1,0 +1,113 @@
+{
+ "scenario": "truth",
+ "rep": 38,
+ "draw": 346,
+ "elapsed_min": 1.6,
+ "divergences": 0,
+ "n_flag": 138,
+ "tp": 135,
+ "fp": 3,
+ "n_true_gt110": 1463,
+ "n_true_gt125": 434,
+ "flagged_of_true_gt110": 135,
+ "flagged_of_true_gt125": 103,
+ "strata_gt110": {
+  "<20": {
+   "n_true": 922,
+   "n_flagged_of_true": 23
+  },
+  "20-49": {
+   "n_true": 322,
+   "n_flagged_of_true": 51
+  },
+  "50-199": {
+   "n_true": 175,
+   "n_flagged_of_true": 37
+  },
+  ">=200": {
+   "n_true": 44,
+   "n_flagged_of_true": 24
+  }
+ },
+ "strata_gt125": {
+  "<20": {
+   "n_true": 271,
+   "n_flagged_of_true": 23
+  },
+  "20-49": {
+   "n_true": 105,
+   "n_flagged_of_true": 38
+  },
+  "50-199": {
+   "n_true": 44,
+   "n_flagged_of_true": 28
+  },
+  ">=200": {
+   "n_true": 14,
+   "n_flagged_of_true": 14
+  }
+ },
+ "coverage_overall": 0.9511230907457322,
+ "coverage_strata": {
+  "<20": {
+   "n": 3422,
+   "n_covered": 3249
+  },
+  "20-49": {
+   "n": 1207,
+   "n_covered": 1155
+  },
+  "50-199": {
+   "n": 740,
+   "n_covered": 704
+  },
+  ">=200": {
+   "n": 196,
+   "n_covered": 185
+  }
+ },
+ "calibration": [
+  {
+   "lo": 0.0,
+   "hi": 0.05,
+   "n": 1091,
+   "n_true_gt110": 10
+  },
+  {
+   "lo": 0.05,
+   "hi": 0.5,
+   "n": 3497,
+   "n_true_gt110": 744
+  },
+  {
+   "lo": 0.5,
+   "hi": 0.8,
+   "n": 624,
+   "n_true_gt110": 387
+  },
+  {
+   "lo": 0.8,
+   "hi": 0.95,
+   "n": 215,
+   "n_true_gt110": 187
+  },
+  {
+   "lo": 0.95,
+   "hi": 1.0,
+   "n": 138,
+   "n_true_gt110": 135
+  }
+ ],
+ "flagged_below": 64,
+ "true_lt090": 1352,
+ "net_excess_true": 1111.6704917275051,
+ "net_excess_est_median": -325.9142667213639,
+ "net_excess_est_lo95": -2128.1535867980474,
+ "net_excess_est_hi95": 1508.019715752739,
+ "flagged_excess_true": 6303.450564397344,
+ "flagged_excess_est_median": 6381.383936978984,
+ "flagged_excess_est_lo95": 6013.9196206485885,
+ "flagged_excess_est_hi95": 6753.444576757027,
+ "sd_u_true": 0.15802046656608582,
+ "sd_u_est_median": 0.16094603852575418
+}

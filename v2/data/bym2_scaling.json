@@ -1,0 +1,23 @@
+{
+  "n": 5565,
+  "pairs": 16129,
+  "mean_degree": 5.796585804132974,
+  "min_degree": 1,
+  "max_degree": 23,
+  "queen_islands": 4,
+  "components_welded": 10,
+  "zero_eigenvalues": 1,
+  "scaling_factor": 3.582939876314247,
+  "joins_km": [
+    16.5,
+    21.6,
+    26.2,
+    374.8,
+    28.7,
+    38.3,
+    10.8,
+    12.6,
+    12.6,
+    16.2
+  ]
+}

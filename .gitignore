@@ -1,0 +1,31 @@
+# Dados grandes / brutos (não versionar)
+data/
+*.csv.gz
+*.dbc
+*.dbf
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Sistema
+.DS_Store
+Icon?
+
+# Manuscrito e sessão (nunca versionar publicamente)
+manuscript/
+.claude/
+
+# Saídas pesadas (manter só as finais, se quiser)
+outputs/**/*.tmp
+
+# Working files that must never be public (submission packages, review notes)
+/v3/
+/v2/preflight/
+/v2/manuscript/
+/v2/model/
+/v2/outputs/figures/*.pdf
+/ATENCAO_REVISAO_DENOMINADOR.md

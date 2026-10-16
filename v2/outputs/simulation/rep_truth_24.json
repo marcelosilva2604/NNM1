@@ -1,0 +1,113 @@
+{
+ "scenario": "truth",
+ "rep": 24,
+ "draw": 2626,
+ "elapsed_min": 1.3,
+ "divergences": 0,
+ "n_flag": 135,
+ "tp": 133,
+ "fp": 2,
+ "n_true_gt110": 1490,
+ "n_true_gt125": 449,
+ "flagged_of_true_gt110": 133,
+ "flagged_of_true_gt125": 100,
+ "strata_gt110": {
+  "<20": {
+   "n_true": 909,
+   "n_flagged_of_true": 25
+  },
+  "20-49": {
+   "n_true": 345,
+   "n_flagged_of_true": 42
+  },
+  "50-199": {
+   "n_true": 190,
+   "n_flagged_of_true": 42
+  },
+  ">=200": {
+   "n_true": 46,
+   "n_flagged_of_true": 24
+  }
+ },
+ "strata_gt125": {
+  "<20": {
+   "n_true": 264,
+   "n_flagged_of_true": 20
+  },
+  "20-49": {
+   "n_true": 111,
+   "n_flagged_of_true": 31
+  },
+  "50-199": {
+   "n_true": 57,
+   "n_flagged_of_true": 32
+  },
+  ">=200": {
+   "n_true": 17,
+   "n_flagged_of_true": 17
+  }
+ },
+ "coverage_overall": 0.9518418688230009,
+ "coverage_strata": {
+  "<20": {
+   "n": 3406,
+   "n_covered": 3227
+  },
+  "20-49": {
+   "n": 1218,
+   "n_covered": 1164
+  },
+  "50-199": {
+   "n": 745,
+   "n_covered": 714
+  },
+  ">=200": {
+   "n": 196,
+   "n_covered": 192
+  }
+ },
+ "calibration": [
+  {
+   "lo": 0.0,
+   "hi": 0.05,
+   "n": 1051,
+   "n_true_gt110": 13
+  },
+  {
+   "lo": 0.05,
+   "hi": 0.5,
+   "n": 3544,
+   "n_true_gt110": 800
+  },
+  {
+   "lo": 0.5,
+   "hi": 0.8,
+   "n": 641,
+   "n_true_gt110": 377
+  },
+  {
+   "lo": 0.8,
+   "hi": 0.95,
+   "n": 194,
+   "n_true_gt110": 167
+  },
+  {
+   "lo": 0.95,
+   "hi": 1.0,
+   "n": 135,
+   "n_true_gt110": 133
+  }
+ ],
+ "flagged_below": 69,
+ "true_lt090": 1411,
+ "net_excess_true": 3157.4982163501872,
+ "net_excess_est_median": 3185.519602194945,
+ "net_excess_est_lo95": 1405.8759195194486,
+ "net_excess_est_hi95": 4952.884113222894,
+ "flagged_excess_true": 6898.235860922197,
+ "flagged_excess_est_median": 6648.4823140140115,
+ "flagged_excess_est_lo95": 6281.043764569358,
+ "flagged_excess_est_hi95": 7019.913701693236,
+ "sd_u_true": 0.16259165108203888,
+ "sd_u_est_median": 0.16353686192299594
+}

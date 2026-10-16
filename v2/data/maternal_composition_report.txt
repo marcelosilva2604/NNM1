@@ -1,0 +1,22 @@
+Maternal composition, pooled 2014-2024
+============================================================
+births in SINASC files             : 30,463,522
+births in v1 nascidos_muni_ano.csv : 30,463,522
+municipality-level |difference|    : max 0  sum 0
+municipalities (pooled)            : 5,593
+
+national shares (known denominators):
+  mother < 20 y                    : 0.151
+  mother >= 35 y                   : 0.155
+  schooling <= 7 y                 : 0.170
+  schooling <= 3 y                 : 0.023
+  non-white mother                 : 0.643
+  < 7 antenatal visits             : 0.284
+  preterm (< 37 w)                 : 0.115
+  birth weight < 2,500 g           : 0.088
+  hospital birth                   : 0.984
+  born outside municipality        : 0.321
+  born in a NICU municipality      : 0.689
+
+missingness: age 0.0000, schooling 0.0121, race 0.0362, visits 0.0053, gestation 0.0157, weight 0.0003
+elapsed 11s

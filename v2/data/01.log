@@ -1,0 +1,35 @@
+2014: 2,979,259 births, 22,697 linked deaths, 5,584 municipalities, 1s
+2015: 3,017,668 births, 23,051 linked deaths, 5,588 municipalities, 1s
+2016: 2,857,800 births, 22,020 linked deaths, 5,588 municipalities, 1s
+2017: 2,923,535 births, 22,637 linked deaths, 5,583 municipalities, 1s
+2018: 2,944,932 births, 22,353 linked deaths, 5,584 municipalities, 1s
+2019: 2,849,146 births, 21,832 linked deaths, 5,583 municipalities, 1s
+2020: 2,730,145 births, 19,997 linked deaths, 5,585 municipalities, 1s
+2021: 2,677,101 births, 19,932 linked deaths, 5,588 municipalities, 1s
+2022: 2,561,922 births, 19,496 linked deaths, 5,587 municipalities, 1s
+2023: 2,537,576 births, 19,422 linked deaths, 5,583 municipalities, 1s
+2024: 2,384,438 births, 17,774 linked deaths, 5,582 municipalities, 1s
+Maternal composition, pooled 2014-2024
+============================================================
+births in linked SINASC files      : 30,463,522
+births in v1 nascidos_muni_ano.csv : 30,463,522
+municipality-level |difference|    : max 0  sum 0
+municipalities (pooled)            : 5,593
+linked neonatal deaths             : 231,211
+SIM neonatal deaths (v1 base)      : 260,023  -> overall link rate 0.889
+
+national shares (known denominators):
+  mother < 20 y                    : 0.151
+  mother >= 35 y                   : 0.155
+  schooling <= 7 y                 : 0.170
+  schooling <= 3 y                 : 0.023
+  non-white mother                 : 0.643
+  < 7 antenatal visits             : 0.284
+  preterm (< 37 w)                 : 0.115
+  birth weight < 2,500 g           : 0.088
+  hospital birth                   : 0.984
+  born outside municipality        : 0.321
+  born in a NICU municipality      : 0.689
+
+missingness: age 0.0000, schooling 0.0121, race 0.0362, visits 0.0053, gestation 0.0157, weight 0.0003
+elapsed 10s

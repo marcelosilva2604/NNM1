@@ -1,0 +1,44 @@
+link_rate: 88 municipalities without a defined value, set to the median
+v2 analysis table
+============================================================
+national: 260,023 neonatal deaths / 30,463,522 live births (SINASC complete) = 8.54 per 1,000
+municipalities with births: 5,593; with births and no neonatal death: 112
+included municipalities : 5,565  (259,965 deaths, 30,455,458 births; 88 with zero deaths; 88 not in v1)
+excluded                : 28 (['110000', '120000', '130000', '140000', '150000', '150475', '160000', '170000', '210000', '220000', '230000', '240000', '250000', '260000', '270000', '290000', '310000', '320000', '330000', '350000', '410000', '420000', '421265', '422000', '431454', '500627', '510000', '520000']; births 8,064, deaths 58)
+with >= 50 deaths       : 955
+births, linked files vs v1 denominator: total diff 0; max |diff| 0
+linkage completeness    : median 0.865, IQR 0.760-0.974; < 0.70 in 835 municipalities (20 with >= 50 deaths)
+
+covariate distribution (median [IQR]):
+  idhm_renda           0.654 [0.572-0.707]
+  idhm_educ            0.560 [0.490-0.631]
+  logpop               9.350 [8.600-10.131]
+  sh_age_lt20          0.167 [0.131-0.205]
+  sh_age_ge35          0.133 [0.111-0.158]
+  sh_esc_le7           0.188 [0.134-0.267]
+  sh_nonwhite          0.725 [0.333-0.909]
+  sh_hospital          0.993 [0.986-0.997]
+  sh_born_outside      0.942 [0.439-0.995]
+  sh_born_nicu_muni    0.344 [0.142-0.792]
+  sh_cons_lt7          0.229 [0.164-0.318]
+  sh_preterm           0.113 [0.100-0.127]
+  sh_lbw               0.083 [0.073-0.092]
+  dist_nicu_100km      0.478 [0.267-0.791]
+  link_rate            0.865 [0.760-0.974]
+
+Spearman correlation with the v1 SMR among municipalities with >= 50 deaths:
+  idhm_renda           -0.110
+  idhm_educ            -0.134
+  logpop               -0.279
+  sh_age_lt20          +0.239
+  sh_age_ge35          -0.182
+  sh_esc_le7           +0.154
+  sh_nonwhite          +0.190
+  sh_hospital          -0.167
+  sh_born_outside      -0.034
+  sh_born_nicu_muni    -0.204
+  sh_cons_lt7          +0.211
+  sh_preterm           +0.052
+  sh_lbw               +0.035
+  dist_nicu_100km      +0.185
+  link_rate            -0.108

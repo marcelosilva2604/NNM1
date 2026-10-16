@@ -1,4 +1,6 @@
-# NNM1 — Neonatal mortality in excess of structure, Brazilian municipalities (2014–2024)
+# NNM1 — Neonatal mortality beyond socioeconomic structure, Brazilian municipalities (2014–2024)
+
+> **Current analysis:** see [`v2/`](v2/README.md) (Bayesian spatial model). The notebooks and outputs described below are an earlier non-spatial analysis, kept for the record.
 
 Analysis code for the study *"Beyond the North-South divide: neonatal mortality in
 excess of structure across Brazilian municipalities (2014–2024)"*.
