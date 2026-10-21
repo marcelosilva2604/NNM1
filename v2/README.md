@@ -2,7 +2,7 @@
 
 Bayesian spatial analysis of neonatal mortality beyond socioeconomic structure and maternal
 composition across Brazilian municipalities, 2014-2024 (BYM2 with restricted spatial
-regression, negative-binomial counts, 5,570 municipalities).
+regression, Poisson counts, 5,565 municipalities).
 
 The notebooks and outputs at the repository root belong to an earlier non-spatial analysis and
 are kept for the record. Everything in this folder supersedes them.
@@ -20,6 +20,8 @@ src/        numbered scripts, in order of execution
               09 comparison with routine outputs
 data/       municipal aggregates and the adjacency graph (no individual records)
 outputs/    municipal posterior summaries, tables, figures (PNG) and run summaries
+supplement/ full supplementary material in English and Portuguese (Markdown and PDF),
+              Figure S1, and municipal_estimates.csv (S7)
 ```
 
 Posterior samples (`model/*.nc`, about 2.7 GB) and the raw DATASUS files are not versioned and
