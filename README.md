@@ -1,53 +1,259 @@
-# NNM1 — Neonatal mortality beyond socioeconomic structure, Brazilian municipalities (2014–2024)
+# NNM1: neonatal mortality beyond socioeconomic structure and maternal composition, Brazilian municipalities, 2014-2024
 
-> **Current analysis:** see [`v2/`](v2/README.md) (Bayesian spatial model). The notebooks and outputs described below are an earlier non-spatial analysis, kept for the record.
+[English](#english) | [Português](#português)
 
-Analysis code for the study *"Beyond the North-South divide: neonatal mortality in
-excess of structure across Brazilian municipalities (2014–2024)"*.
+---
 
-For each Brazilian municipality, we model the neonatal deaths expected from its
-socioeconomic structure (and then access to care), read the residual excess as a
-standardised mortality ratio (SMR) with empirical-Bayes shrinkage, decompose the
-excess by avoidable cause, and quantify the avoidable burden across benchmarks.
-The approach extends the residual-excess method of Martinelli et al. (2025,
-*Public Health*) from adult mortality in a single metropolis to the neonatal
-period across an entire country.
+## English
 
-## Repository contents
+Analysis code, derived municipal results, and supplementary material for the manuscript
+**"Neonatal mortality beyond socioeconomic structure and maternal composition across Brazilian
+municipalities, 2014-2024: a Bayesian spatial analysis"** (Portuguese title: *Mortalidade neonatal
+além da estrutura socioeconômica e da composição materna nos municípios brasileiros, 2014-2024:
+análise espacial bayesiana*), prepared for submission to *Epidemiologia e Serviços de Saúde:
+Revista do Sistema Único de Saúde do Brasil* (Epidemiol Serv Saude).
+
+This README is bilingual. Code, code comments, and file names are in English. Everything else
+(READMEs, data dictionary, supplementary material) is in English and Portuguese.
+
+### Why this study
+
+Neonatal deaths account for a large share of deaths in children under five, and ending preventable
+newborn deaths is a target of Sustainable Development Goal 3.2. Brazil reduced infant mortality for
+two decades under a universal health system, but the decline slowed after 2014, and neonatal
+mortality still follows the municipal Human Development Index and is higher in the North and
+Northeast. That gradient combines two components: the risk profile of the women who give birth in
+each place, and the outcome of those births. A model-based expectation for each municipality, with
+its uncertainty, describes how far observed mortality departs from what the specified population
+profile predicts. The residual has limits: it contains unmeasured population risk, model
+misspecification, and registration error, in addition to any deficiency in care, and it is
+detectable only where expected counts are large enough (most Brazilian municipalities expect fewer
+than 15 neonatal deaths in a decade).
+
+**Objective:** to quantify, with uncertainty, how far neonatal mortality in each Brazilian
+municipality departs from what its socioeconomic structure and maternal composition predict, and
+whether that departure persists across periods.
+
+### Relevance for the journal
+
+*Epidemiologia e Serviços de Saúde* is the journal of Brazil's Unified Health System (SUS). The
+study uses SUS information systems (SIM, Sinasc, CNES) at the municipal level, and the results are
+framed as a surveillance aid: they suggest where confidential investigation of neonatal deaths,
+within infant and fetal death surveillance, may concentrate, and where checking the quality of
+registration is a reasonable first step. They are not an estimate of avoidable deaths.
+
+### Design and data
+
+- Ecological study of 5,565 municipalities (municipality of maternal residence as the unit),
+  2014-2024: 259,965 neonatal deaths (0 to 27 days) and 30,455,458 live births.
+- Mortality System (SIM) and Live Birth System (Sinasc), Ministry of Health; CNES (neonatal intensive
+  care beds); IBGE population; Atlas of Human Development in Brazil (HDI, 2010).
+- Poisson model with a BYM2 spatial random effect under restricted spatial regression (the random
+  effect is orthogonal to the covariates), adjusted for municipal structure and for maternal age,
+  schooling, and race/color from every birth record. Estimands: residual relative risk (RR),
+  exceedance probabilities, and excess deaths, with 95% credible intervals.
+- Registration indicators, period-specific fits, alternative specifications, and a simulation-based
+  evaluation of the classification rule are in the supplementary material.
+
+### Main findings reported in the manuscript
+
+- Residual heterogeneity: SD of log RR 0.157 (95% CrI 0.151-0.164) in the primary model.
+- Net excess over expectation: 1,669 deaths (95% CrI -137 to 3,341). The North and Northeast
+  remained above expectation and the South below.
+- 112 municipalities were classified above expectation (posterior probability of RR > 1.10 of at
+  least 0.95) and 48 below (probability of RR < 0.90 of at least 0.95).
+- Maternal composition removed 60 of the 153 municipalities flagged by a spatial model with
+  structure only and added 19.
+- 35 municipalities were above expectation in both 2014-2019 and 2020-2024.
+- In a simulation-based evaluation under a correctly specified model, 1.7% of flagged municipalities
+  had a true RR at or below 1.10, and 7.6% of the municipalities with a true RR above 1.10 were
+  flagged. This is a simulation under favorable conditions, not a validation on real data.
+
+The classification is a screening aid. A residual can reflect unmeasured risk, misspecification, or
+registration error, and the analysis does not exclude registration error.
+
+### Repository map
 
 ```
-notebooks/
-  01_cohort_indicators.ipynb   neonatal cohort + avoidable-cause groups + municipal indicators
-  02_excess_mortality.ipynb    nested negative binomial model (socioeconomic → +access) → SMR
-                               with Byar CIs + empirical-Bayes shrinkage; cause decomposition;
-                               avoidable burden ladder; robustness and data-quality checks
-outputs/
-  figures/                     final figures (excess map, burden map)
-  tables/                      derived tables (municipal SMRs, avoidable ladder, coefficients)
-requirements.txt               Python dependencies (Python 3.9)
+README.md                      this file (English and Portuguese)
+DATA_DICTIONARY.md             columns of municipal_estimates.csv (English and Portuguese)
+v2/                            current analysis: scripts, municipal aggregates, outputs, supplement
+  src/                         numbered scripts 01-09, in order of execution
+  data/                        municipal aggregates and the adjacency graph (no individual records)
+  outputs/                     municipal posterior summaries, tables, figures, run summaries
+  supplement/                  full supplementary material (English and Portuguese), Figure S1,
+                               municipal_estimates.csv
+notebooks/, outputs/           data-preparation notebooks and their results (see below)
+requirements.txt               dependencies of the data-preparation notebooks
 ```
 
-Raw data are **not** versioned here — they are large and publicly available (see below).
+`notebooks/01_cohort_indicators.ipynb` builds the neonatal cohort and the municipal base that
+`v2/src/03_build_dataset.py` reads. `notebooks/02_excess_mortality.ipynb` is an auxiliary non-spatial
+analysis (standardized mortality ratio, including an avoidable-cause decomposition that is not part
+of this manuscript) whose output is read by step 03 for comparison columns (`v1_*`). Neither is the
+primary analysis reported in the manuscript.
 
-## Data sources (all public)
+### Reproducing
 
-- **SIM** (mortality) and **SINASC** (live births) — Brazilian Ministry of Health, [DATASUS](https://datasus.saude.gov.br/transferencia-de-arquivos/)
-- **CNES** (neonatal ICU beds, primary care units) — DATASUS
-- **IBGE/SIDRA** — municipal resident population
-- **Atlas Brasil** — municipal Human Development Index (IDHM, 2010)
-- Avoidable-cause list — Malta et al. (2007) / DATASUS
+Inputs are listed as the scripts read them; the table does not claim that every step runs from a
+clean clone without the files marked "not distributed".
 
-## Reproducing
+| Step | Reads | Distributed here? | Writes |
+|---|---|---|---|
+| 01 maternal composition | yearly SINASC files (individual level) | no (DATASUS; set `NNM1_SINASC`) | `v2/data/maternal_composition*.csv` |
+| 02 adjacency graph | `analysis_muni.csv`, IBGE municipal mesh (`br_municipios.geojson`) | table yes; mesh no | `adjacency_pairs.csv`, `municipalities.csv` |
+| 03 analysis dataset | processed municipal tables (DATASUS, IBGE, Atlas, CNES), health-region tables, notebook outputs | no | `v2/data/analysis_muni.csv` |
+| 04 model fitting | `analysis_muni.csv`, `adjacency_pairs.csv` | yes | `v2/model/*.nc` (about 2.7 GB, not versioned), `muni_*.csv` |
+| 05 results | model output, `analysis_muni.csv` | inputs from 04 | `v2/outputs/` tables, figures, `NUMBERS.json` |
+| 06 manuscript tables | `v2/outputs/tables/` | yes | `manuscript_tables.md` |
+| 07 period persistence | death cohort and processed tables (individual level) | no | `period_estimates.csv`, `period_persistence.json` |
+| 08 simulation | `model/idata_bym2_rsr_full.nc` (from 04) | from 04 | `v2/outputs/simulation/`, calibration tables |
+| 09 comparison with routine outputs | model summaries (04), `municipal_estimates.csv` (05) | from 04 and 05 | `added_value.json` |
+
+Environment: PyMC 6.2, geopandas, libpysal (steps 02-09); polars (step 01). The provided results in
+`v2/outputs/` are those generated by the authors' run.
+
+### Data sources (all public)
+
+- SIM and Sinasc, Ministry of Health, [DATASUS](https://datasus.saude.gov.br/transferencia-de-arquivos/)
+- CNES (neonatal intensive care beds), DATASUS
+- Municipal population, [IBGE/SIDRA](https://sidra.ibge.gov.br/)
+- Municipal Human Development Index (2010), [Atlas Brasil](https://www.atlasbrasil.org.br/)
+
+Individual-level files are not distributed here. The repository holds municipal aggregates only.
+
+### Supplementary material
+
+`v2/supplement/`: `Supplementary_Material_EN.pdf` and `Supplementary_Material_PT.pdf` (sections
+S1-S10, Tables S1-S8; Markdown sources `supplement_en.md` and `supplement_pt.md`), `Figure_S1.pdf`,
+and `municipal_estimates.csv` (S7). Column definitions are in `DATA_DICTIONARY.md`.
+
+---
+
+## Português
+
+Código de análise, resultados municipais derivados e material suplementar do manuscrito
+**"Mortalidade neonatal além da estrutura socioeconômica e da composição materna nos municípios
+brasileiros, 2014-2024: análise espacial bayesiana"** (título em inglês: *Neonatal mortality beyond
+socioeconomic structure and maternal composition across Brazilian municipalities, 2014-2024: a
+Bayesian spatial analysis*), preparado para submissão à revista *Epidemiologia e Serviços de Saúde:
+Revista do Sistema Único de Saúde do Brasil* (Epidemiol Serv Saude).
+
+Este README é bilíngue. O código, os comentários do código e os nomes de arquivo estão em inglês.
+O restante (READMEs, dicionário de dados, material suplementar) está em inglês e em português.
+
+### Justificativa
+
+Os óbitos neonatais respondem por grande parcela das mortes em menores de cinco anos, e o fim das
+mortes evitáveis de recém-nascidos é meta do Objetivo de Desenvolvimento Sustentável 3.2. O Brasil,
+sob um sistema universal de saúde, reduziu a mortalidade infantil por duas décadas, mas a queda
+desacelerou após 2014, e a mortalidade neonatal ainda acompanha o Índice de Desenvolvimento Humano
+Municipal e é mais alta no Norte e no Nordeste. Esse gradiente combina dois componentes: o perfil de
+risco das mulheres que dão à luz em cada lugar e o desfecho desses nascimentos. Uma expectativa
+explícita, baseada em modelo, para cada município, com sua incerteza, descreve o quanto a
+mortalidade observada se afasta do que o perfil populacional especificado prediz. O resíduo tem
+limites: contém risco populacional não medido, erro de especificação do modelo e erro de registro,
+além de qualquer deficiência do cuidado, e só é detectável onde as contagens esperadas são grandes
+o bastante (na maioria dos municípios brasileiros esperam-se menos de 15 óbitos neonatais em uma
+década).
+
+**Objetivo:** quantificar, com incerteza, o quanto a mortalidade neonatal de cada município
+brasileiro se afasta do que a estrutura socioeconômica e a composição materna predizem, e se esse
+afastamento persiste entre períodos.
+
+### Pertinência para a revista
+
+A *Epidemiologia e Serviços de Saúde* é a revista do Sistema Único de Saúde (SUS) do Brasil. O
+estudo usa sistemas de informação do SUS (SIM, Sinasc, CNES) em nível municipal, e os resultados
+são apresentados como apoio à vigilância: sugerem onde a investigação confidencial dos óbitos
+neonatais, no âmbito da vigilância do óbito infantil e fetal, pode se concentrar, e onde verificar
+a qualidade do registro é um primeiro passo razoável. Não são uma estimativa de óbitos evitáveis.
+
+### Desenho e dados
+
+- Estudo ecológico de 5.565 municípios (município de residência da mãe como unidade), 2014-2024:
+  259.965 óbitos neonatais (0 a 27 dias) e 30.455.458 nascidos vivos.
+- Sistema de Informações sobre Mortalidade (SIM) e Sistema de Informações sobre Nascidos Vivos
+  (Sinasc), Ministério da Saúde; CNES (leitos de terapia intensiva neonatal); população do IBGE;
+  Atlas do Desenvolvimento Humano no Brasil (IDHM, 2010).
+- Modelo de Poisson com efeito aleatório espacial BYM2 sob regressão espacial restrita (o efeito
+  aleatório é ortogonal às covariáveis), ajustado pela estrutura municipal e pela idade, escolaridade
+  e raça/cor das mães, obtidas de todos os registros de nascimento. Estimandos: risco relativo (RR)
+  residual, probabilidades de excedência e óbitos em excesso, com intervalos de credibilidade de 95%.
+- Indicadores de registro, ajustes por período, especificações alternativas e uma avaliação por
+  simulação da regra de classificação estão no material suplementar.
+
+### Principais resultados descritos no manuscrito
+
+- Heterogeneidade residual: DP do log do RR de 0,157 (ICr95% 0,151; 0,164) no modelo primário.
+- Excesso líquido sobre o esperado: 1.669 óbitos (ICr95% -137; 3.341). Nordeste e Norte
+  permaneceram acima do esperado, e o Sul, abaixo.
+- 112 municípios foram classificados acima do esperado (probabilidade a posteriori de RR > 1,10 de
+  pelo menos 0,95) e 48 abaixo (probabilidade de RR < 0,90 de pelo menos 0,95).
+- A composição materna removeu 60 dos 153 municípios sinalizados por um modelo espacial apenas com
+  estrutura e incluiu 19.
+- 35 municípios estiveram acima do esperado em 2014-2019 e em 2020-2024.
+- Em uma avaliação por simulação com o modelo corretamente especificado, 1,7% dos municípios
+  sinalizados tinham RR verdadeiro igual ou inferior a 1,10, e 7,6% dos municípios com RR verdadeiro
+  acima de 1,10 foram sinalizados. É uma simulação em condições favoráveis, não uma validação em
+  dados reais.
+
+A classificação é um apoio à triagem. O resíduo pode refletir risco não medido, erro de especificação
+ou erro de registro, e a análise não exclui erro de registro.
+
+### Mapa do repositório
 
 ```
-pip install -r requirements.txt
+README.md                      este arquivo (inglês e português)
+DATA_DICTIONARY.md             colunas de municipal_estimates.csv (inglês e português)
+v2/                            análise atual: scripts, agregados municipais, saídas, suplemento
+  src/                         scripts numerados de 01 a 09, em ordem de execução
+  data/                        agregados municipais e grafo de adjacências (sem registros individuais)
+  outputs/                     resumos a posteriori por município, tabelas, figuras, resumos das execuções
+  supplement/                  material suplementar completo (inglês e português), Figura S1,
+                               municipal_estimates.csv
+notebooks/, outputs/           notebooks de preparação dos dados e seus resultados (ver abaixo)
+requirements.txt               dependências dos notebooks de preparação dos dados
 ```
 
-Download the SIM, SINASC and CNES files for 2014–2024 from DATASUS into `data/raw/`,
-then run the notebooks in order (`01` → `02`). The notebooks are self-documenting;
-paths are relative to the project root.
+O `notebooks/01_cohort_indicators.ipynb` constrói a coorte neonatal e a base municipal que o
+`v2/src/03_build_dataset.py` lê. O `notebooks/02_excess_mortality.ipynb` é uma análise não espacial
+auxiliar (razão de mortalidade padronizada, com uma decomposição por causas evitáveis que não faz
+parte deste manuscrito), cuja saída é lida pelo passo 03 para colunas de comparação (`v1_*`).
+Nenhum dos dois é a análise primária descrita no manuscrito.
 
-## Data availability of results
+### Reprodução
 
-`outputs/tables/excess_mortality.csv` contains the full municipal results
-(observed and expected deaths, raw and empirical-Bayes SMR, confidence intervals).
+As entradas estão listadas como os scripts as leem; a tabela não afirma que todo passo roda a partir
+de um clone limpo sem os arquivos marcados como "não distribuído".
+
+| Passo | Lê | Distribuído aqui? | Escreve |
+|---|---|---|---|
+| 01 composição materna | arquivos anuais do Sinasc (nível individual) | não (DATASUS; definir `NNM1_SINASC`) | `v2/data/maternal_composition*.csv` |
+| 02 grafo de adjacências | `analysis_muni.csv`, malha municipal do IBGE (`br_municipios.geojson`) | tabela sim; malha não | `adjacency_pairs.csv`, `municipalities.csv` |
+| 03 base de análise | tabelas municipais processadas (DATASUS, IBGE, Atlas, CNES), tabelas de região de saúde, saídas dos notebooks | não | `v2/data/analysis_muni.csv` |
+| 04 ajuste dos modelos | `analysis_muni.csv`, `adjacency_pairs.csv` | sim | `v2/model/*.nc` (cerca de 2,7 GB, não versionado), `muni_*.csv` |
+| 05 resultados | saída do modelo, `analysis_muni.csv` | entradas vêm do 04 | tabelas, figuras e `NUMBERS.json` em `v2/outputs/` |
+| 06 tabelas do manuscrito | `v2/outputs/tables/` | sim | `manuscript_tables.md` |
+| 07 persistência entre períodos | coorte de óbitos e tabelas processadas (nível individual) | não | `period_estimates.csv`, `period_persistence.json` |
+| 08 simulação | `model/idata_bym2_rsr_full.nc` (do 04) | vem do 04 | `v2/outputs/simulation/`, tabelas de calibração |
+| 09 comparação com saídas de rotina | resumos dos modelos (04), `municipal_estimates.csv` (05) | vêm do 04 e do 05 | `added_value.json` |
+
+Ambiente: PyMC 6.2, geopandas, libpysal (passos 02 a 09); polars (passo 01). Os resultados
+fornecidos em `v2/outputs/` são os gerados pela execução dos autores.
+
+### Fontes de dados (todas públicas)
+
+- SIM e Sinasc, Ministério da Saúde, [DATASUS](https://datasus.saude.gov.br/transferencia-de-arquivos/)
+- CNES (leitos de terapia intensiva neonatal), DATASUS
+- População municipal, [IBGE/SIDRA](https://sidra.ibge.gov.br/)
+- Índice de Desenvolvimento Humano Municipal (2010), [Atlas Brasil](https://www.atlasbrasil.org.br/)
+
+Os arquivos de nível individual não são distribuídos aqui. O repositório contém apenas agregados
+municipais.
+
+### Material suplementar
+
+`v2/supplement/`: `Supplementary_Material_EN.pdf` e `Supplementary_Material_PT.pdf` (seções S1 a S10,
+Tabelas S1 a S8; fontes em Markdown `supplement_en.md` e `supplement_pt.md`), `Figure_S1.pdf` e
+`municipal_estimates.csv` (S7). As definições das colunas estão em `DATA_DICTIONARY.md`.
