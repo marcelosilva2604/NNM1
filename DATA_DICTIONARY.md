@@ -1,6 +1,6 @@
 # Data dictionary / Dicionário de dados
 
-`v2/supplement/municipal_estimates.csv` (supplementary item S7): one row per municipality, 5,565 rows,
+`v2/supplement/municipal_estimates.csv` (supplement section S7): one row per municipality, 5,565 rows,
 24 columns. / uma linha por município, 5.565 linhas, 24 colunas.
 
 CrI = credible interval. / ICr = intervalo de credibilidade.

@@ -10,7 +10,8 @@ Estimands (all with 95% equal-tailed credible intervals):
     excess deaths  E_i (RR_i - 1) per municipality, where E_i = births_i exp(b0 + X_i beta);
                    summed as gross (positive part), net (signed), and above +10%, nationally,
                    by macro-region and by state
-    heterogeneity  sigma_u (SD of log RR), rho (spatial share), sigma_hr (health region)
+    heterogeneity  SD of u across municipalities within a posterior draw (median over draws; the BYM2 scale
+                   sigma_u is not the realized spread), rho (spatial share), sigma_hr (health region)
     detectability  minimum RR detectable with 80% power at a municipality's expected count
     negative control  sigma_u by cause group (malformations vs care-amenable groups)
 

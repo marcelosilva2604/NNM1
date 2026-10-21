@@ -20,7 +20,7 @@ models is the covariate set and the prior on u.
                    Negative-control contrast: malformations should show the least
                    unexplained heterogeneity if the residual reflects care.
 
-Covariates enter standardised (z-scores over the 5,477 municipalities). Priors are weakly
+Covariates enter standardised (z-scores over the 5,565 municipalities). Priors are weakly
 informative on that scale: beta ~ N(0, 0.5), sigma_u ~ HalfNormal(0.5), rho ~ Beta(1, 1).
 The ICAR component is divided by sqrt(scaling factor) so that rho is the share of the
 variance of u that is spatially structured (Riebler et al. 2016).

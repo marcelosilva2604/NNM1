@@ -23,6 +23,7 @@ src/        numbered scripts, in order of execution / scripts numerados, em orde
               07 persistence between 2014-2019 and 2020-2024 / persistência entre os períodos
               08 simulation-based calibration of the classification rule / calibração por simulação da regra de classificação
               09 comparison with routine outputs / comparação com saídas de rotina
+              10 Portuguese manuscript figures / figuras do manuscrito em português
 data/       municipal aggregates and the adjacency graph (no individual records) /
               agregados municipais e grafo de adjacências (sem registros individuais)
 outputs/    municipal posterior summaries, tables, figures (PNG) and run summaries /

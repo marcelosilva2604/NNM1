@@ -20,3 +20,4 @@ manuscript/
 outputs/**/*.tmp
 /v2/model/
 /v2/outputs/figures/*.pdf
+/v2/outputs/figures_pt/*.pdf
