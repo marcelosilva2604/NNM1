@@ -33,7 +33,7 @@ Outputs (v2/model/):
     muni_<model>.csv        per-municipality posterior summaries of RR = exp(u)
 
 Run:
-    "../artigo 2/.venv/bin/python" v2/src/04_fit_models.py [model ...] [--trial]
+    python v2/src/04_fit_models.py [model ...] [--trial]
 """
 
 import json

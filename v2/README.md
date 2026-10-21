@@ -27,9 +27,9 @@ data/       municipal aggregates and the adjacency graph (no individual records)
               agregados municipais e grafo de adjacências (sem registros individuais)
 outputs/    municipal posterior summaries, tables, figures (PNG) and run summaries /
               resumos a posteriori por município, tabelas, figuras (PNG) e resumos das execuções
-supplement/ full supplementary material in English and Portuguese (Markdown and PDF), Figure S1,
-              and municipal_estimates.csv (S7) / material suplementar completo em inglês e português
-              (Markdown e PDF), Figura S1 e municipal_estimates.csv (S7)
+supplement/ full supplementary material in English and Portuguese (Markdown and PDF), Figure S1
+              (English and Portuguese), and municipal_estimates.csv (S7) / material suplementar completo
+              em inglês e português (Markdown e PDF), Figura S1 (inglês e português) e municipal_estimates.csv (S7)
 ```
 
 `outputs/tables/cause_negative_control.csv` is the output of an exploratory analysis that is not
@@ -43,4 +43,4 @@ posteriori (`model/*.nc`, cerca de 2,7 GB) e os arquivos brutos do DATASUS não 
 estudo de simulação avalia o método com o modelo corretamente especificado e não é um teste nos
 dados reais.
 
-Environment / Ambiente: PyMC 6.2, geopandas, libpysal.
+Environment / Ambiente: see `requirements.txt` / ver `requirements.txt`.

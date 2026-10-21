@@ -1,6 +1,6 @@
 # Material suplementar
 
-**Mortalidade neonatal além da estrutura socioeconômica e da composição materna nos municípios brasileiros, 2014-2024: análise espacial bayesiana**
+**Mortalidade neonatal além da estrutura socioeconômica e da composição materna: estudo ecológico com análise espacial bayesiana nos municípios brasileiros, 2014-2024**
 
 ## S1. Grafo de adjacências e escalonamento do BYM2
 
@@ -22,7 +22,7 @@ sendo $s$ o fator de escala e $W$ a matriz de adjacências. A projeção na últ
 
 Distribuições a priori: $\beta_0 \sim N(\log(\bar y / \bar b), 1)$, $\beta_j \sim N(0, 0{,}5)$ na escala padronizada, $\sigma_u \sim$ meia-normal(0,5), $\rho \sim$ Beta(1, 1) e, no modelo com região de saúde, $\gamma_r = \sigma_{hr} z_r$ com $z_r \sim N(0,1)$ e $\sigma_{hr} \sim$ meia-normal(0,5), somado a $u^{*}$ antes da projeção. Os modelos permutáveis substituem a convolução por $\sigma_u \theta$.
 
-Amostragem: PyMC 6.2 (Abril-Pla et al., 2023), amostrador No-U-Turn, taxa de aceitação-alvo de 0,9, quatro cadeias com 2.000 iterações de aquecimento e 1.000 amostras retidas (4.000 amostras). Modelo primário: 0 transições divergentes; $\hat R$ dividido máximo de 1,008 (hiperparâmetros 1,007); tamanho efetivo de amostra bulk mínimo de 346 para os hiperparâmetros e 1.807 para os efeitos municipais. Todos os onze ajustes do período completo tiveram 0 divergências e $\hat R$ máximo ≤ 1,055 (o BYM2 irrestrito com composição, cujos coeficientes das covariáveis misturam lentamente pelo motivo acima; seu mapa de resíduos é semelhante ao do ajuste restrito, Spearman 0,99; $\hat R$ máximo dos efeitos municipais 1,02).
+Amostragem: PyMC 6.2 (Abril-Pla et al., 2023), amostrador No-U-Turn, taxa de aceitação-alvo de 0,9, quatro cadeias com 2.000 iterações de aquecimento e 1.000 amostras retidas (4.000 amostras). Modelo primário: 0 transições divergentes; $\hat R$ dividido máximo de 1,008 (hiperparâmetros 1,007); tamanho efetivo de amostra (bulk ESS) mínimo de 346 para os hiperparâmetros e 1.807 para os efeitos municipais. Todos os onze ajustes do período completo tiveram 0 divergências e $\hat R$ máximo ≤ 1,055 (o BYM2 irrestrito com composição, cujos coeficientes das covariáveis misturam lentamente pelo motivo acima; seu mapa de resíduos é semelhante ao do ajuste restrito, Spearman 0,99; $\hat R$ máximo dos efeitos municipais 1,02).
 
 A distância ao município mais próximo com leitos de terapia intensiva neonatal foi calculada a partir dos estabelecimentos registrados no último ano em que cada município aparece no CNES; a presença de leitos usa qualquer ano de 2014-2024. A heterogeneidade é informada como o desvio-padrão de $u$ entre os municípios dentro de uma amostra a posteriori (mediana das amostras), porque, sob um ICAR escalonado, o parâmetro de escala $\sigma_u$ do BYM2 (0,37 no modelo primário) não é a dispersão realizada do campo.
 
@@ -108,7 +108,7 @@ A soma, sobre todos os municípios, da parte positiva da diferença entre óbito
 
 ## S6. Figura
 
-**Figura S1.** Os trinta municípios com maior excesso de óbitos pela mediana a posteriori, com o risco relativo residual (mediana e intervalo de credibilidade de 95%). As linhas verticais marcam 1,00 e 1,10. A classificação como acima do esperado usa a probabilidade a posteriori P(RR > 1,10) ≥ 0,95, não o intervalo mostrado; 35 dos 112 municípios classificados têm intervalo de 95% cujo limite inferior é igual ou inferior a 1,10.
+**Figura S1.** Os trinta municípios com maior excesso de óbitos pela mediana a posteriori, com o risco relativo residual (mediana e intervalo de credibilidade de 95%). As linhas verticais marcam 1,00 e 1,10. A classificação como acima do esperado usa a probabilidade a posteriori P(RR>1,10)≥0,95, não o intervalo mostrado; 35 dos 112 municípios classificados têm intervalo de 95% cujo limite inferior é igual ou inferior a 1,10.
 
 ## S7. Dados suplementares
 
@@ -137,20 +137,20 @@ Acima do esperado nos dois períodos: 35; apenas em 2014-2019: 38; apenas em 202
 
 ## S9. Avaliação por simulação da regra de classificação
 
-Foram gerados quarenta conjuntos de dados com os nascimentos e as covariáveis observados, uma amostra a posteriori do modelo primário como verdade conhecida (intercepto, coeficientes e efeitos municipais) e contagens de Poisson (39 verdades distintas: duas réplicas sortearam a mesma amostra a posteriori); outros 12 conjuntos não tinham resíduo (todos os efeitos municipais iguais a zero). Cada um foi reajustado com o modelo primário (quatro cadeias com 2.000 iterações de aquecimento e 1.000 amostras retidas; sem transições divergentes nos 40 conjuntos com verdade) e comparado com a verdade. A verdade é condicional a um gerador calibrado no modelo ajustado e o modelo está corretamente especificado, de modo que a calibração da Tabela S7 é em parte esperada por construção; estes são resultados de uma avaliação por simulação em condições favoráveis, não uma medida de desempenho nos dados reais.
+Foram gerados quarenta conjuntos de dados com os nascimentos e as covariáveis observados, uma amostra a posteriori do modelo primário como valores verdadeiros simulados, conhecidos por construção (intercepto, coeficientes e efeitos municipais) e contagens de Poisson (39 conjuntos distintos de valores verdadeiros: duas réplicas sortearam a mesma amostra a posteriori); outros 12 conjuntos não tinham resíduo (todos os efeitos municipais iguais a zero). Cada um foi reajustado com o modelo primário (quatro cadeias com 2.000 iterações de aquecimento e 1.000 amostras retidas; sem transições divergentes nos 40 conjuntos com valores verdadeiros simulados) e comparado com os valores verdadeiros simulados. Esses valores são condicionais a um gerador calibrado no modelo ajustado e o modelo está corretamente especificado, de modo que a calibração da Tabela S7 é em parte esperada por construção; estes são resultados de uma avaliação por simulação em condições favoráveis, não uma medida de desempenho nos dados reais.
 
-Nos 40 conjuntos com verdade, a regra sinalizou em média 114,5 municípios (intervalo 86-150) dos 1.475 com risco relativo verdadeiro acima de 1,10; 1,7% dos municípios sinalizados (80 de 4.580) tinham risco relativo verdadeiro igual ou inferior a 1,10 (por conjunto, 0%-4,8%; os erros-padrão de Monte Carlo das sensibilidades agrupadas não foram calculados). A sensibilidade global foi de 7,6% para risco relativo verdadeiro acima de 1,10 e de 20,4% acima de 1,25. Nos 12 conjuntos sem resíduo, a regra não sinalizou nenhum município acima ou abaixo do esperado. O intervalo de credibilidade de 95% cobriu o risco relativo verdadeiro em 95,0% dos municípios. O excesso líquido (média verdadeira 1.672) foi subestimado em 247 em média (15%), com o intervalo cobrindo a verdade em 95% dos conjuntos; o excesso entre os municípios sinalizados (média verdadeira 6.065, média estimada 5.963) foi subestimado em 102 (1,7%), com o intervalo cobrindo a verdade em 80% dos conjuntos, abaixo dos 95% nominais.
+Nos 40 conjuntos com valores verdadeiros simulados, a regra sinalizou em média 114,5 municípios (intervalo 86-150) dos 1.475 com risco relativo verdadeiro acima de 1,10; 1,7% dos municípios sinalizados (80 de 4.580) tinham risco relativo verdadeiro igual ou inferior a 1,10 (por conjunto, 0%-4,8%; os erros-padrão de Monte Carlo das sensibilidades agrupadas não foram calculados). A sensibilidade global foi de 7,6% para risco relativo verdadeiro acima de 1,10 e de 20,4% acima de 1,25. Nos 12 conjuntos sem resíduo, a regra não sinalizou nenhum município acima ou abaixo do esperado. O intervalo de credibilidade de 95% cobriu o risco relativo verdadeiro em 95,0% dos municípios. O excesso líquido (média verdadeira 1.672) foi subestimado em 247 em média (15%), com o intervalo cobrindo o valor verdadeiro em 95% dos conjuntos; o excesso entre os municípios sinalizados (média verdadeira 6.065, média estimada 5.963) foi subestimado em 102 (1,7%), com o intervalo cobrindo o valor verdadeiro em 80% dos conjuntos, abaixo dos 95% nominais.
 
-**Tabela S6.** Sensibilidade da regra e cobertura do intervalo de credibilidade de 95%, segundo os óbitos esperados verdadeiros do município (agrupado entre os conjuntos com verdade).
+**Tabela S6.** Sensibilidade da regra e cobertura do intervalo de credibilidade de 95%, segundo os óbitos esperados verdadeiros do município (agrupado entre os conjuntos com valores verdadeiros simulados).
 
 | Óbitos esperados | Municípios com RR verdadeiro > 1,10 | Sinalizados | Sensibilidade | RR verdadeiro > 1,25 | Sinalizados | Sensibilidade | Cobertura do intervalo de 95% |
 |---|---|---|---|---|---|---|---|
 | <20 | 36.576 | 801 | 2,2% | 10.274 | 670 | 6,5% | 95,0% |
 | 20-49 | 13.363 | 1.437 | 10,8% | 4.374 | 1.217 | 27,8% | 94,8% |
 | 50-199 | 7.323 | 1.385 | 18,9% | 1.955 | 1.041 | 53,2% | 95,1% |
-| >=200 | 1.722 | 877 | 50,9% | 609 | 588 | 96,6% | 95,4% |
+| ≥200 | 1.722 | 877 | 50,9% | 609 | 588 | 96,6% | 95,4% |
 
-**Tabela S7.** Calibração grosseira da probabilidade de excedência P(RR > 1,10): proporção de municípios com risco relativo verdadeiro acima de 1,10, por faixa de probabilidade estimada (agrupado entre os conjuntos com verdade; a probabilidade média predita dentro das faixas não foi calculada).
+**Tabela S7.** Calibração grosseira da probabilidade de excedência P(RR > 1,10): proporção de municípios com risco relativo verdadeiro acima de 1,10, por faixa de probabilidade estimada (agrupado entre os conjuntos com valores verdadeiros simulados; a probabilidade média predita dentro das faixas não foi calculada).
 
 | P(RR > 1,10) estimada | Municípios-conjuntos | Proporção realmente acima de 1,10 |
 |---|---|---|
@@ -162,7 +162,7 @@ Nos 40 conjuntos com verdade, a regra sinalizou em média 114,5 municípios (int
 
 ## S10. Comparação com outras abordagens
 
-**Tabela S8.** Municípios sinalizados acima do esperado (P(RR > 1,10) ≥ 0,95) pelo modelo primário (regressão espacial restrita com estrutura e composição materna), por dois modelos apenas com estrutura (não espacial com efeito permutável; espacial com a mesma distribuição a priori BYM2 restrita) e pela taxa bruta de mortalidade neonatal.
+**Tabela S8.** Municípios sinalizados acima do esperado (P(RR>1,10)≥0,95) pelo modelo primário (regressão espacial restrita com estrutura e composição materna), por dois modelos apenas com estrutura (não espacial com efeito permutável; espacial com a mesma distribuição a priori BYM2 restrita) e pela taxa bruta de mortalidade neonatal.
 
 | Comparação | Número |
 |---|---|

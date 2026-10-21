@@ -1,8 +1,8 @@
 """Assemble the v2 municipality table.
 
 One row per municipality of residence, pooled 2014-2024, with the same inclusion rule
-as v1 (live births > 0, IDHM and population available: 5,477 municipalities) so the
-two versions are comparable, plus the variables v1 did not have:
+as the earlier non-spatial analysis (live births > 0, IDHM and population available), which
+gave 5,477 municipalities; the analysis table has 5,565 (88 were not in that analysis), plus the variables v1 did not have:
 
     maternal composition       shares of mothers < 20 y, >= 35 y, <= 7 y schooling, non-white
     place of birth             shares born in hospital, outside the municipality, in a
@@ -23,7 +23,7 @@ Outputs (v2/data/):
     dataset_report.txt
 
 Run:
-    "../artigo 2/.venv/bin/python" v2/src/03_build_dataset.py
+    python v2/src/03_build_dataset.py
 """
 
 import csv
@@ -36,7 +36,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 V2 = HERE.parent
 A1 = V2.parent
-A2REF = A1.parent / "artigo 2" / "data" / "ref"
+A2REF = Path(__import__("os").environ.get("NNM1_REF", A1 / "data" / "ref"))  # health-region tables; not distributed
 PROC = A1 / "data" / "processed"
 RAW = A1 / "data" / "raw"
 

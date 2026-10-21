@@ -34,7 +34,7 @@ import polars as pl
 HERE = Path(__file__).resolve().parent
 V2 = HERE.parent
 A1 = V2.parent
-SINASC = Path(__import__("os").environ.get("NNM1_SINASC", A1.parent.parent / "mortalidade infantil" / "data" / "raw" / "SINASC"))
+SINASC = Path(__import__("os").environ.get("NNM1_SINASC", A1 / "data" / "raw" / "SINASC"))
 YEARS = range(2014, 2025)
 
 COLS = ["CODMUNRES", "CODMUNNASC", "LOCNASC", "IDADEMAE", "ESCMAE", "CONSULTAS",

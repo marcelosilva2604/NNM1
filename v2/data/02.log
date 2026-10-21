@@ -1,4 +1,4 @@
-/Users/marcelocarvalhoesilva/project/artigos doutorado/artigo 2/.venv/lib/python3.12/site-packages/libpysal/weights/contiguity.py:354: UserWarning: The weights matrix is not fully connected: 
+<venv>/site-packages/libpysal/weights/contiguity.py:354: UserWarning: The weights matrix is not fully connected: 
  There are 9 disconnected components.
  There are 4 islands with ids: 802, 1524, 3498, 5564.
   W.__init__(self, neighbors, ids=ids, **kw)

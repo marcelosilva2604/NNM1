@@ -1,15 +1,14 @@
 """Municipal adjacency graph and the BYM2 scaling factor.
 
-Queen contiguity on the IBGE municipal mesh, restricted to the municipalities the v1
-model used (live births > 0, IDHM and population available), then welded into a single
-connected component by joining each isolated piece to its nearest centroid, as in
-artigo 2's 1-data/02_build_adjacency.py. An ICAR prior is improper on every
+Queen contiguity on the IBGE municipal mesh, restricted to the 5,565 municipalities of the
+analysis table (data/analysis_muni.csv), then welded into a single connected component by
+joining each isolated piece to its nearest centroid. An ICAR prior is improper on every
 disconnected component, so this is required rather than cosmetic.
 
 The BYM2 parameterisation (Riebler et al. 2016) needs the ICAR component scaled so that
 its generalised variance is 1; the scaling factor is the geometric mean of the diagonal
 of the generalised inverse of the graph Laplacian Q = D - W, computed here by eigen
-decomposition of the dense 5,477 x 5,477 matrix.
+decomposition of the dense 5,565 x 5,565 matrix.
 
 Outputs (v2/data/):
     adjacency_pairs.csv      undirected neighbour pairs (i < j), 0-indexed in the
@@ -19,7 +18,7 @@ Outputs (v2/data/):
     adjacency_report.txt
 
 Run (after 03_build_dataset.py, whose municipality order this file follows):
-    "../artigo 2/.venv/bin/python" v2/src/02_adjacency.py
+    python v2/src/02_adjacency.py
 """
 
 import json

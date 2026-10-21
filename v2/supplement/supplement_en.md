@@ -1,6 +1,6 @@
 # Supplementary material
 
-**Neonatal mortality beyond socioeconomic structure and maternal composition across Brazilian municipalities, 2014-2024: a Bayesian spatial analysis**
+**Neonatal mortality beyond socioeconomic structure and maternal composition: an ecological study with Bayesian spatial analysis across Brazilian municipalities, 2014-2024**
 
 ## S1. Adjacency graph and BYM2 scaling
 
@@ -137,20 +137,20 @@ Above expectation in both periods: 35; in 2014-2019 only: 38; in 2020-2024 only:
 
 ## S9. Simulation-based evaluation of the classification rule
 
-Forty datasets were generated with the observed births and covariates, one posterior draw of the primary model as the known truth (intercept, coefficients, and municipal effects) and Poisson counts (39 distinct truths: two replicates drew the same posterior draw); 12 further datasets had no residual (all municipal effects zero). Each was refitted with the primary model (four chains of 2,000 warm-up and 1,000 retained draws; no divergent transitions in the 40 truth datasets) and compared with the truth. The truth is conditional on a generator calibrated to the fitted model and the model is correctly specified, so the calibration in Table S7 is partly expected by construction; these are the results of a simulation-based evaluation under favorable conditions, not a measure of performance on the real data.
+Forty datasets were generated with the observed births and covariates, one posterior draw of the primary model as simulated true values known by construction (intercept, coefficients, and municipal effects) and Poisson counts (39 distinct sets of true values: two replicates drew the same posterior draw); 12 further datasets had no residual (all municipal effects zero). Each was refitted with the primary model (four chains of 2,000 warm-up and 1,000 retained draws; no divergent transitions in the 40 datasets with simulated true values) and compared with the simulated true values. These values are conditional on a generator calibrated to the fitted model and the model is correctly specified, so the calibration in Table S7 is partly expected by construction; these are the results of a simulation-based evaluation under favorable conditions, not a measure of performance on the real data.
 
-In the 40 truth datasets the rule flagged 114.5 municipalities on average (range 86-150) of 1,475 with a true relative risk above 1.10; 1.7% of flagged municipalities (80 of 4,580) had a true relative risk of 1.10 or less (by dataset, 0%-4.8%; Monte Carlo standard errors for the pooled sensitivities were not computed). Overall sensitivity was 7.6% for a true relative risk above 1.10 and 20.4% above 1.25. In the 12 datasets with no residual the rule flagged no municipality above or below expectation. The 95% credible interval covered the true relative risk in 95.0% of municipalities. The net excess (true mean 1,672) was underestimated by 247 on average (15%), with the interval covering the truth in 95% of datasets; the excess among flagged municipalities (true mean 6,065, estimated mean 5,963) was underestimated by 102 (1.7%), with the interval covering the truth in 80% of datasets, below the nominal 95%.
+In the 40 datasets with simulated true values the rule flagged 114.5 municipalities on average (range 86-150) of 1,475 with a true relative risk above 1.10; 1.7% of flagged municipalities (80 of 4,580) had a true relative risk of 1.10 or less (by dataset, 0%-4.8%; Monte Carlo standard errors for the pooled sensitivities were not computed). Overall sensitivity was 7.6% for a true relative risk above 1.10 and 20.4% above 1.25. In the 12 datasets with no residual the rule flagged no municipality above or below expectation. The 95% credible interval covered the true relative risk in 95.0% of municipalities. The net excess (true mean 1,672) was underestimated by 247 on average (15%), with the interval covering the true value in 95% of datasets; the excess among flagged municipalities (true mean 6,065, estimated mean 5,963) was underestimated by 102 (1.7%), with the interval covering the true value in 80% of datasets, below the nominal 95%.
 
-**Table S6.** Sensitivity of the rule and coverage of the 95% credible interval, by true expected deaths of the municipality (pooled over truth datasets).
+**Table S6.** Sensitivity of the rule and coverage of the 95% credible interval, by true expected deaths of the municipality (pooled over datasets with simulated true values).
 
 | Expected deaths | Municipalities with true RR > 1.10 | Flagged | Sensitivity | True RR > 1.25 | Flagged | Sensitivity | 95% interval coverage |
 |---|---|---|---|---|---|---|---|
 | <20 | 36,576 | 801 | 2.2% | 10,274 | 670 | 6.5% | 95.0% |
 | 20-49 | 13,363 | 1,437 | 10.8% | 4,374 | 1,217 | 27.8% | 94.8% |
 | 50-199 | 7,323 | 1,385 | 18.9% | 1,955 | 1,041 | 53.2% | 95.1% |
-| >=200 | 1,722 | 877 | 50.9% | 609 | 588 | 96.6% | 95.4% |
+| ≥200 | 1,722 | 877 | 50.9% | 609 | 588 | 96.6% | 95.4% |
 
-**Table S7.** Coarse calibration of the exceedance probability P(RR > 1.10): share of municipalities with a true relative risk above 1.10, by bin of estimated probability (pooled over truth datasets; mean predicted probability within bins not computed).
+**Table S7.** Coarse calibration of the exceedance probability P(RR > 1.10): share of municipalities with a true relative risk above 1.10, by bin of estimated probability (pooled over datasets with simulated true values; mean predicted probability within bins not computed).
 
 | Estimated P(RR > 1.10) | Municipality-datasets | Share truly above 1.10 |
 |---|---|---|

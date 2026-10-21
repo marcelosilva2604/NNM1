@@ -3,7 +3,7 @@
 Outputs: v2/outputs/tables/manuscript_tables.md
 
 Run:
-    "../artigo 2/.venv/bin/python" v2/src/06_manuscript_tables.py
+    python v2/src/06_manuscript_tables.py
 """
 
 import json

@@ -1,0 +1,15 @@
+# Environment of the scripts in v2/src (steps 02-09), as installed where they were run.
+# Step 01 additionally needs polars (polars 1.44.2 was used); steps 01, 03 and 07 need files that
+# are not distributed (see ../README.md).
+pymc==6.2.0
+arviz==1.2.0
+numpy==2.4.6
+pandas==3.0.5
+scipy==1.18.0
+xarray==2026.7.0
+h5netcdf==1.8.1
+geopandas==1.1.4
+libpysal==4.15.0
+shapely==2.1.2
+pyproj==3.7.2
+matplotlib==3.11.1

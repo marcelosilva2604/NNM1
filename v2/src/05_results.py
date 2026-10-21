@@ -1,7 +1,7 @@
 """Estimands, tables, figures and the numbers file for artigo 1 v2.
 
 Everything the manuscript states comes from the posteriors written by 04_fit_models.py;
-nothing is refitted here. The primary model is bym2_full.
+nothing is refitted here. The primary model is bym2_rsr_full.
 
 Estimands (all with 95% equal-tailed credible intervals):
     RR_i           relative risk beyond structure and maternal composition, exp(u_i)
@@ -18,7 +18,7 @@ Outputs:
     v2/outputs/tables/*.csv, v2/outputs/figures/*.png|pdf, v2/outputs/NUMBERS.json
 
 Run:
-    "../artigo 2/.venv/bin/python" v2/src/05_results.py
+    python v2/src/05_results.py
 """
 
 import json

@@ -1,4 +1,4 @@
-# Dados grandes / brutos (não versionar)
+# Large or raw data (not versioned)
 data/
 *.csv.gz
 *.dbc
@@ -11,21 +11,12 @@ __pycache__/
 .venv/
 venv/
 
-# Sistema
+# System
 .DS_Store
 Icon?
 
-# Manuscrito e sessão (nunca versionar publicamente)
+# Working folders
 manuscript/
-.claude/
-
-# Saídas pesadas (manter só as finais, se quiser)
 outputs/**/*.tmp
-
-# Working files that must never be public (submission packages, review notes)
-/v3/
-/v2/preflight/
-/v2/manuscript/
 /v2/model/
 /v2/outputs/figures/*.pdf
-/ATENCAO_REVISAO_DENOMINADOR.md
