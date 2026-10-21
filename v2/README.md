@@ -13,7 +13,7 @@ para submissão à *Epidemiologia e Serviços de Saúde*. O README do repositór
 traz a justificativa, o desenho, os principais resultados e a tabela de reprodução.
 
 ```
-src/        numbered scripts, in order of execution / scripts numerados, em ordem de execução
+src/        numbered scripts, in logical order / scripts numerados, em ordem lógica
               01 maternal composition and place of birth (from SINASC) / composição materna e local do parto
               02 adjacency graph / grafo de adjacências
               03 analysis dataset / base de análise

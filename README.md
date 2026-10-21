@@ -78,7 +78,7 @@ registration error, and the analysis does not exclude registration error.
 README.md                      this file (English and Portuguese)
 DATA_DICTIONARY.md             columns of municipal_estimates.csv (English and Portuguese)
 v2/                            current analysis: scripts, municipal aggregates, outputs, supplement
-  src/                         numbered scripts 01-09, in order of execution
+  src/                         numbered scripts 01-10, in logical order
   data/                        municipal aggregates and the adjacency graph (no individual records)
   outputs/                     municipal posterior summaries, tables, figures, run summaries
   supplement/                  full supplementary material (English and Portuguese), Figure S1,
@@ -216,7 +216,7 @@ ou erro de registro, e a análise não exclui erro de registro.
 README.md                      este arquivo (inglês e português)
 DATA_DICTIONARY.md             colunas de municipal_estimates.csv (inglês e português)
 v2/                            análise atual: scripts, agregados municipais, saídas, suplemento
-  src/                         scripts numerados de 01 a 09, em ordem de execução
+  src/                         scripts numerados de 01 a 10, em ordem lógica
   data/                        agregados municipais e grafo de adjacências (sem registros individuais)
   outputs/                     resumos a posteriori por município, tabelas, figuras, resumos das execuções
   supplement/                  material suplementar completo (inglês e português), Figura S1,
