@@ -1,4 +1,4 @@
-# NNM1: neonatal mortality beyond socioeconomic structure and maternal composition, Brazilian municipalities, 2014-2024
+# NNM1: municipalities with neonatal mortality above that expected from socioeconomic structure and maternal composition, Brazil, 2014-2024
 
 [English](#english) | [Português](#português)
 
@@ -7,10 +7,11 @@
 ## English
 
 Analysis code, derived municipal results, and supplementary material for the manuscript
-**"Neonatal mortality beyond socioeconomic structure and maternal composition: an ecological study
-with Bayesian spatial analysis across Brazilian municipalities, 2014-2024"** (Portuguese title:
-*Mortalidade neonatal além da estrutura socioeconômica e da composição materna: estudo ecológico com
-análise espacial bayesiana nos municípios brasileiros, 2014-2024*), prepared for submission to *Epidemiologia e Serviços de Saúde:
+**"Municipalities with neonatal mortality above that expected from socioeconomic structure and
+maternal composition: an ecological study with Bayesian spatial analysis, Brazil, 2014-2024"**
+(Portuguese title: *Municípios com mortalidade neonatal acima do esperado pela estrutura
+socioeconômica e pela composição materna: estudo ecológico com análise espacial bayesiana, Brasil,
+2014-2024*), prepared for submission to *Epidemiologia e Serviços de Saúde:
 Revista do Sistema Único de Saúde do Brasil* (Epidemiol Serv Saude).
 
 This README is bilingual. Code, code comments, and file names are in English. Everything else
@@ -30,9 +31,9 @@ misspecification, and registration error, in addition to any deficiency in care,
 detectable only where expected counts are large enough (most Brazilian municipalities expect fewer
 than 15 neonatal deaths in a decade).
 
-**Objective:** to quantify, with uncertainty, how far neonatal mortality in each Brazilian
-municipality departs from what its socioeconomic structure and maternal composition predict, and
-whether that departure persists across periods.
+**Objective:** to identify the Brazilian municipalities with neonatal mortality above that expected
+from socioeconomic structure and maternal composition, with uncertainty, and to verify whether the
+excess persists between 2014-2019 and 2020-2024.
 
 ### Relevance for the journal
 
@@ -142,10 +143,11 @@ S1-S10, Tables S1-S8, A4; Markdown sources `supplement_en.md` and `supplement_pt
 ## Português
 
 Código de análise, resultados municipais derivados e material suplementar do manuscrito
-**"Mortalidade neonatal além da estrutura socioeconômica e da composição materna: estudo ecológico
-com análise espacial bayesiana nos municípios brasileiros, 2014-2024"** (título em inglês: *Neonatal
-mortality beyond socioeconomic structure and maternal composition: an ecological study with Bayesian
-spatial analysis across Brazilian municipalities, 2014-2024*), preparado para submissão à revista *Epidemiologia e Serviços de Saúde:
+**"Municípios com mortalidade neonatal acima do esperado pela estrutura socioeconômica e pela
+composição materna: estudo ecológico com análise espacial bayesiana, Brasil, 2014-2024"** (título em
+inglês: *Municipalities with neonatal mortality above that expected from socioeconomic structure and
+maternal composition: an ecological study with Bayesian spatial analysis, Brazil, 2014-2024*),
+preparado para submissão à revista *Epidemiologia e Serviços de Saúde:
 Revista do Sistema Único de Saúde do Brasil* (Epidemiol Serv Saude).
 
 Este README é bilíngue. O código, os comentários do código e os nomes de arquivo estão em inglês.
@@ -166,9 +168,9 @@ além de qualquer deficiência do cuidado, e só é detectável onde as contagen
 o bastante (na maioria dos municípios brasileiros esperam-se menos de 15 óbitos neonatais em uma
 década).
 
-**Objetivo:** quantificar, com incerteza, o quanto a mortalidade neonatal de cada município
-brasileiro se afasta do que a estrutura socioeconômica e a composição materna predizem, e se esse
-afastamento persiste entre períodos.
+**Objetivo:** identificar os municípios brasileiros com mortalidade neonatal acima do esperado pela
+estrutura socioeconômica e pela composição materna, com incerteza, e verificar se o excesso persiste
+entre 2014-2019 e 2020-2024.
 
 ### Pertinência para a revista
 
