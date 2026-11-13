@@ -1,9 +1,18 @@
 {
  "scenario": "null",
  "rep": 6,
- "draw": 929,
- "elapsed_min": 1.5,
+ "draw": 3717,
+ "elapsed_min": 1.8,
  "divergences": 0,
+ "seed_generator": 20361022,
+ "seed_sampler": 20266022,
+ "draws": 4000,
+ "tune": 4000,
+ "chains": 4,
+ "max_rhat_hyper": 1.021729538692372,
+ "min_ess_bulk_hyper": 147.47845170447368,
+ "max_rhat_u": 1.133062810978263,
+ "min_ess_bulk_u": 18.7413226217812,
  "n_flag": 0,
  "tp": 0,
  "fp": 0,
@@ -50,16 +59,16 @@
  "coverage_overall": 1.0,
  "coverage_strata": {
   "<20": {
-   "n": 3416,
-   "n_covered": 3416
+   "n": 3408,
+   "n_covered": 3408
   },
   "20-49": {
-   "n": 1209,
-   "n_covered": 1209
+   "n": 1219,
+   "n_covered": 1219
   },
   "50-199": {
-   "n": 743,
-   "n_covered": 743
+   "n": 741,
+   "n_covered": 741
   },
   ">=200": {
    "n": 197,
@@ -101,13 +110,13 @@
  "flagged_below": 0,
  "true_lt090": 0,
  "net_excess_true": 0.0,
- "net_excess_est_median": -5.163613007454751,
- "net_excess_est_lo95": -202.5821004379468,
- "net_excess_est_hi95": 177.83043890452265,
+ "net_excess_est_median": 5.204878654743238,
+ "net_excess_est_lo95": -139.299468448836,
+ "net_excess_est_hi95": 205.40632063129735,
  "flagged_excess_true": 0.0,
  "flagged_excess_est_median": NaN,
  "flagged_excess_est_lo95": NaN,
  "flagged_excess_est_hi95": NaN,
  "sd_u_true": 0.0,
- "sd_u_est_median": 0.0037875159113874264
+ "sd_u_est_median": 0.00300388013888852
 }

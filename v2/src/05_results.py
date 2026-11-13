@@ -26,6 +26,7 @@ import json
 from pathlib import Path
 
 import arviz as az
+import nc_io
 import geopandas as gpd
 import matplotlib
 import matplotlib.pyplot as plt
@@ -37,7 +38,7 @@ from shapely.geometry import Point
 matplotlib.use("Agg")
 HERE = Path(__file__).resolve().parent
 V2 = HERE.parent
-A1 = V2.parent
+A1 = V2.parent  # repository root; raw inputs under data/ (not distributed)
 DATA, MODEL, TAB, FIG = V2 / "data", V2 / "model", V2 / "outputs" / "tables", V2 / "outputs" / "figures"
 TAB.mkdir(parents=True, exist_ok=True); FIG.mkdir(parents=True, exist_ok=True)
 PRIMARY = "bym2_rsr_full"
@@ -58,7 +59,7 @@ def ci(a, axis=None):
 
 
 def post(name):
-    return az.from_netcdf(MODEL / f"idata_{name}.nc")["posterior"]
+    return nc_io.load(MODEL / f"idata_{name}.nc")["posterior"]
 
 
 def fit_info(name):
@@ -75,7 +76,7 @@ def hyper_table(df):
         ps = post(name)
         info = fit_info(name)
         X = info["spec"]["X"]
-        sd = {c: float(df[c].std()) for c in X}
+        sd = {c: float(df[c].std(ddof=0)) for c in X}
         beta = ps["beta"].stack(s=("chain", "draw")).values
         for k, c in enumerate(X):
             irr = np.exp(beta[k])
@@ -376,7 +377,7 @@ def main():
     cause_control(df, m)
     detectability(df, E)
     ppc(df, E, rr)
-    figures(df, m)
+    # Figures are produced by 12_figures_flow_dag.py and 13_figure_map.py.
     NUM["primary_hyper"] = hyper[hyper.model == PRIMARY].drop(columns="model").to_dict("records")
     NUM["fit_primary"] = {k: v for k, v in fit_info(PRIMARY).items() if k != "hyper"}
     (V2 / "outputs" / "NUMBERS.json").write_text(json.dumps(NUM, indent=2, default=float))

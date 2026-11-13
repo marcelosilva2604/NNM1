@@ -1,26 +1,26 @@
 {
-  "primary_flagged": 112,
+  "primary_flagged": 110,
   "conventional_flagged": 74,
   "in_common": 58,
-  "primary_only": 54,
+  "primary_only": 52,
   "conventional_only": 16,
   "primary_only_by_region": {
-    "Northeast": 45,
+    "Northeast": 43,
     "Southeast": 3,
     "North": 2,
-    "South": 2,
-    "Central-West": 2
+    "Central-West": 2,
+    "South": 2
   },
-  "spearman_rr_primary_vs_conventional": 0.7553256796160775,
-  "spatial_struct_flagged": 153,
-  "spatial_struct_in_common": 93,
-  "primary_only_vs_spatial_struct": 19,
-  "spatial_struct_only": 60,
-  "crude_nmr_top_k_k": 112,
-  "crude_nmr_top_k_in_common_with_primary": 46,
+  "spearman_rr_primary_vs_conventional": 0.7553245540661875,
+  "spatial_struct_flagged": 151,
+  "spatial_struct_in_common": 94,
+  "primary_only_vs_spatial_struct": 16,
+  "spatial_struct_only": 57,
+  "crude_nmr_top_k_k": 110,
+  "crude_nmr_top_k_in_common_with_primary": 44,
   "flagged_with_ge50_deaths": 67,
-  "flagged_ge50_in_top_k_crude": 46,
+  "flagged_ge50_in_top_k_crude": 44,
   "top67_crude_ge50_overlap_with_flagged_ge50": 38,
-  "expected_false_flags_model_based": 1.7719999999999994,
-  "expected_false_flag_share_model_based": 0.015821428571428566
+  "expected_false_flags_model_based": 1.6563749999999997,
+  "expected_false_flag_share_model_based": 0.015057954545454543
 }

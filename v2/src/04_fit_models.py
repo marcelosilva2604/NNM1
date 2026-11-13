@@ -42,13 +42,14 @@ import time
 from pathlib import Path
 
 import arviz as az
+import nc_io
 import numpy as np
 import pandas as pd
 import pymc as pm
 import xarray as xr
 
 HERE = Path(__file__).resolve().parent
-V2 = HERE.parent
+V2 = Path(__import__("os").environ.get("NNM1_ROOT", HERE.parent))
 DATA, OUT = V2 / "data", V2 / "model"
 OUT.mkdir(exist_ok=True)
 
@@ -161,7 +162,9 @@ def summarise(idata, df, name, spec, elapsed, draws, tune, chains):
     ess_u = float(az.ess(idata, var_names=["u"])["u"].min())
     info = {
         "model": name, "spec": spec, "n": int(len(df)), "draws": draws, "tune": tune, "chains": chains,
-        "elapsed_s": round(elapsed, 1),
+        "elapsed_s": round(elapsed, 1), "seed": SEED, "target_accept": 0.9,
+        "min_ess_tail_hyper": float(az.ess(idata, var_names=[v for v in ["b0","beta","sigma_u","rho","sigma_hr"] if v in post], method="tail").to_dataset().to_array().min()),
+        "min_ess_tail_u": float(az.ess(idata, var_names=["u"], method="tail")["u"].min()),
         "divergences": int(idata["sample_stats"]["diverging"].sum()),
         "max_rhat_hyper": float(summ["r_hat"].max()), "min_ess_bulk_hyper": float(summ["ess_bulk"].min()),
         "max_rhat_u": rhat_u, "min_ess_bulk_u": ess_u,
@@ -176,20 +179,28 @@ def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     trial = "--trial" in sys.argv
     names = args or ORDER
-    draws, tune, chains = (300, 300, 2) if trial else (1000, 2000, 4)
+    draws, tune, chains = (300, 300, 2) if trial else (int(__import__("os").environ.get("NNM_DRAWS", 1000)), int(__import__("os").environ.get("NNM_TUNE", 2000)), 4)
     df, W, scaling = load()
     print(f"n = {len(df)}, scaling factor = {scaling:.4f}, trial = {trial}", flush=True)
     for name in names:
         spec = SPECS[name]
         path = OUT / f"idata_{name}.nc"
         if path.exists() and not trial:
+            if not (OUT / f"fit_{name}.json").exists():
+                print(f"[{name}] posterior saved; recovering summaries", flush=True)
+                recovered = nc_io.load(path)
+                summarise(recovered, df, name, spec, 0, recovered["posterior"].sizes["draw"], tune, chains)
+                meta = json.loads((OUT / f"fit_{name}.json").read_text())
+                meta["elapsed_s"] = None
+                meta["timing_note"] = "Recovered from saved posterior after summary failure; sampling and command times are in logs and run_manifest.jsonl."
+                (OUT / f"fit_{name}.json").write_text(json.dumps(meta, indent=2))
             print(f"[{name}] cached, skipping", flush=True)
             continue
         t0 = time.time()
         print(f"[{name}] sampling {chains} chains x ({tune} tune + {draws} draws) ...", flush=True)
         with build(df, W, scaling, spec):
             raw = pm.sample(draws=draws, tune=tune, chains=chains, cores=chains, random_seed=SEED,
-                            target_accept=0.9, progressbar=False)
+                            target_accept=0.9, progressbar=False, compute_convergence_checks=False)
         elapsed = time.time() - t0
         print(f"[{name}] done in {elapsed / 60:.1f} min", flush=True)
         # theta and phi are nuisance here; u carries what the paper uses. ArviZ 1.x returns an
@@ -200,7 +211,7 @@ def main():
         ds["u"] = ds["u"].astype("float32")
         idata = xr.DataTree.from_dict({"posterior": ds, "sample_stats": raw["sample_stats"].to_dataset()})
         if not trial:
-            idata.to_netcdf(path, engine="h5netcdf")
+            nc_io.save(idata, path)
         summarise(idata, df, name if not trial else f"{name}_trial", spec, elapsed, draws, tune, chains)
 
 

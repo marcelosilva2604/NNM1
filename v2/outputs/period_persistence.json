@@ -13,130 +13,182 @@
   },
   "fit": {
     "1": {
+      "model": "period1",
+      "spec": {
+        "X": [
+          "idhm_renda",
+          "idhm_educ",
+          "logpop",
+          "sh_age_lt20",
+          "sh_age_ge35",
+          "sh_esc_le7",
+          "sh_nonwhite"
+        ],
+        "prior": "bym2_rsr",
+        "outcome": "deaths_total",
+        "hr": false
+      },
+      "n": 5565,
+      "draws": 4000,
+      "tune": 4000,
+      "chains": 4,
+      "elapsed_s": 109.4,
+      "seed": 20261014,
+      "target_accept": 0.9,
+      "min_ess_tail_hyper": 937.8451069331862,
+      "min_ess_tail_u": 5711.089329276534,
       "divergences": 0,
-      "max_rhat_u": 1.0076976111240867,
-      "elapsed_min": 0.9
+      "max_rhat_hyper": 1.010403,
+      "min_ess_bulk_hyper": 510.424947,
+      "max_rhat_u": 1.0032683275294543,
+      "min_ess_bulk_u": 3253.44733886052
     },
     "2": {
+      "model": "period2",
+      "spec": {
+        "X": [
+          "idhm_renda",
+          "idhm_educ",
+          "logpop",
+          "sh_age_lt20",
+          "sh_age_ge35",
+          "sh_esc_le7",
+          "sh_nonwhite"
+        ],
+        "prior": "bym2_rsr",
+        "outcome": "deaths_total",
+        "hr": false
+      },
+      "n": 5565,
+      "draws": 4000,
+      "tune": 4000,
+      "chains": 4,
+      "elapsed_s": 80.7,
+      "seed": 20261015,
+      "target_accept": 0.9,
+      "min_ess_tail_hyper": 976.1910897133046,
+      "min_ess_tail_u": 4961.436774418129,
       "divergences": 0,
-      "max_rhat_u": 1.0100251788799661,
-      "elapsed_min": 1.0
+      "max_rhat_hyper": 1.010943,
+      "min_ess_bulk_hyper": 529.399629,
+      "max_rhat_u": 1.0033088894445699,
+      "min_ess_bulk_u": 1930.7867047642255
     }
   },
   "sd_log_rr": {
     "1": {
-      "median": 0.16944719851016998,
-      "lo95": 0.1609667595475912,
-      "hi95": 0.17795245125889778
+      "median": 0.16943489015102386,
+      "lo95": 0.16062227003276347,
+      "hi95": 0.1781786173582077
     },
     "2": {
-      "median": 0.16545194387435913,
-      "lo95": 0.15552776791155337,
-      "hi95": 0.17610537745058535
+      "median": 0.16559627652168274,
+      "lo95": 0.15515359975397586,
+      "hi95": 0.1759713601320982
     }
   },
   "rho": {
-    "1": 0.9542583920919555,
-    "2": 0.9579174830343836
+    "1": 0.9536686385420605,
+    "2": 0.9606680315660391
   },
   "n_above": {
-    "1": 73,
-    "2": 80
+    "1": 74,
+    "2": 82
   },
   "n_below": {
-    "1": 47,
-    "2": 9
+    "1": 45,
+    "2": 8
   },
-  "above_both": 35,
-  "above_p1_only": 38,
-  "above_p2_only": 45,
-  "above_both_expected_if_independent": 1.0494159928122193,
-  "above_both_hypergeom_p": 3.2978697091238516e-48,
-  "above_both_stratified_permutation_mean": 2.9518,
-  "above_both_stratified_permutation_max": 10,
+  "above_both": 34,
+  "above_p1_only": 40,
+  "above_p2_only": 48,
+  "above_both_expected_if_independent": 1.090386343216532,
+  "above_both_hypergeom_p": 1.8678910679501685e-45,
+  "above_both_stratified_permutation_mean": 3.1605,
+  "above_both_stratified_permutation_max": 12,
   "above_both_stratified_permutation_p": 9.999000099990002e-05,
-  "above_p1_rr_p1_median": 1.3745416402816772,
-  "above_p1_also_p2_share": 0.4794520547945205,
-  "above_p2_also_p1_share": 0.4375,
-  "above_p1_rr_p2_median": 1.2457261085510254,
-  "above_p1_rr_p2_gt110_share": 0.9178082191780822,
-  "above_p1_p2_rr_gt1_share": 0.9863013698630136,
-  "above_both_joint_p_ge95": 31,
-  "above_both_also_pooled": 35,
-  "above_either_period": 118,
-  "above_pooled": 112,
-  "above_pooled_above_in_neither_period": 23,
-  "spearman_rr_p1_p2_all": 0.5058076212872931,
-  "spearman_rr_p1_p2_ge25_deaths_each": 0.6147623717153028,
+  "above_p1_rr_p1_median": 1.371198296546936,
+  "above_p1_also_p2_share": 0.4594594594594595,
+  "above_p2_also_p1_share": 0.4146341463414634,
+  "above_p1_rr_p2_median": 1.2373820543289185,
+  "above_p1_rr_p2_gt110_share": 0.8918918918918919,
+  "above_p1_p2_rr_gt1_share": 1.0,
+  "above_both_joint_p_ge95": 30,
+  "above_both_also_pooled": 34,
+  "above_either_period": 122,
+  "above_pooled": 110,
+  "above_pooled_above_in_neither_period": 20,
+  "spearman_rr_p1_p2_all": 0.5104720063126708,
+  "spearman_rr_p1_p2_ge25_deaths_each": 0.6156160615170605,
   "n_ge25_deaths_each": 783,
-  "spearman_rr_p1_p2_ge20_expected_each": 0.5751978992516739,
-  "n_ge20_expected_each": 978,
-  "spearman_rr_p1_pooled": 0.8827788127563643,
-  "spearman_rr_p2_pooled": 0.80365017305825,
+  "spearman_rr_p1_p2_ge20_expected_each": 0.5774685610578817,
+  "n_ge20_expected_each": 980,
+  "spearman_rr_p1_pooled": 0.8832255815669352,
+  "spearman_rr_p2_pooled": 0.8074595834142266,
   "net_excess_by_region": {
     "1": {
       "Brazil": [
-        601.9612986646484,
-        -716.618662923315,
-        1856.8139651042686
+        560.3223188340513,
+        -735.8521217957369,
+        1814.6293721724119
       ],
       "North": [
-        464.88967051599855,
-        127.64315008939958,
-        805.134071952684
+        454.22228376778924,
+        105.81495141129588,
+        800.8601533915571
       ],
       "Northeast": [
-        1651.1993309058191,
-        1209.5235191233767,
-        2130.23307217328
+        1656.3971131341295,
+        1194.3967453958394,
+        2120.582884381627
       ],
       "Central-West": [
-        60.433458126276264,
-        -173.82088744372805,
-        296.02706636294135
+        65.98197361449857,
+        -174.89701315740817,
+        304.04004292188665
       ],
       "Southeast": [
-        -1262.8997748354102,
-        -2067.1031843957626,
-        -505.70944696006046
+        -1297.854126329521,
+        -2067.654213727638,
+        -525.325081483947
       ],
       "South": [
-        -313.8723671576231,
-        -566.3348749639325,
-        -58.81671641830151
+        -321.5944150540129,
+        -573.2163380849241,
+        -70.2333691104308
       ],
       "deaths": 152418
     },
     "2": {
       "Brazil": [
-        1297.7430835368784,
-        377.82708230528596,
-        2155.278151530226
+        1281.612316648435,
+        392.3065319956971,
+        2171.8807296872046
       ],
       "North": [
-        401.46624332362194,
-        109.24171776220633,
-        673.4961253009509
+        394.5684846383038,
+        100.75709418864555,
+        684.0318775395988
       ],
       "Northeast": [
-        974.6675507971812,
-        635.4448924624305,
-        1329.0249249159147
+        969.4441531209695,
+        613.1971707438926,
+        1327.5365036421056
       ],
       "Central-West": [
-        -30.624257854716475,
-        -226.74419302625037,
-        168.8163290628288
+        -25.643634228662975,
+        -221.2222256539938,
+        173.10380643757392
       ],
       "Southeast": [
-        312.1681804909368,
-        -231.8505326007147,
-        812.8378664526144
+        304.3453921979831,
+        -222.682918751324,
+        833.2941074397412
       ],
       "South": [
-        -359.40263671716775,
-        -551.4721110748304,
-        -150.3532236678007
+        -357.6892617129319,
+        -557.5164874261682,
+        -157.39874626863156
       ],
       "deaths": 107547
     }

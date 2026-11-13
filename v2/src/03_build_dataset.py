@@ -35,7 +35,7 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 V2 = HERE.parent
-A1 = V2.parent
+A1 = V2.parent  # repository root; raw inputs under data/ (not distributed)
 A2REF = Path(__import__("os").environ.get("NNM1_REF", A1 / "data" / "ref"))  # health-region tables; not distributed
 PROC = A1 / "data" / "processed"
 RAW = A1 / "data" / "raw"

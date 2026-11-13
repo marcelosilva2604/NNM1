@@ -25,6 +25,7 @@ import time
 from pathlib import Path
 
 import arviz as az
+import nc_io
 import numpy as np
 import pandas as pd
 import pymc as pm
@@ -32,7 +33,7 @@ import pymc as pm
 HERE = Path(__file__).resolve().parent
 ROOT = Path(_os.environ.get("NNM1_ROOT", HERE.parent))  # repository root; override with NNM1_ROOT
 MODEL, DATA = ROOT / "model", ROOT / "data"
-SIM = ROOT / "outputs" / "simulation"
+SIM = Path(_os.environ.get("NNM_SIM_OUT", ROOT / "outputs" / "simulation"))
 TAB = ROOT / "outputs" / "tables"
 SIM.mkdir(parents=True, exist_ok=True)
 TAB.mkdir(parents=True, exist_ok=True)
@@ -49,7 +50,7 @@ PBINS = [0.0, 0.05, 0.5, 0.8, 0.95, 1.0000001]
 
 def replicate(scenario, k):
     df, W, scaling = fm.load()
-    post = az.from_netcdf(MODEL / "idata_bym2_rsr_full.nc")["posterior"]
+    post = nc_io.load(MODEL / "idata_bym2_rsr_full.nc")["posterior"]
     u_all = post["u"].stack(s=("chain", "draw")).values
     b0_all = post["b0"].stack(s=("chain", "draw")).values
     beta_all = post["beta"].stack(s=("chain", "draw")).values
@@ -66,9 +67,11 @@ def replicate(scenario, k):
     df2["deaths_total"] = y.astype(int)
 
     t0 = time.time()
+    draws = int(_os.environ.get("NNM_SIM_DRAWS", 1000))
+    tune = int(_os.environ.get("NNM_SIM_TUNE", 2000))
     with fm.build(df2, W, scaling, SPEC):
-        raw = pm.sample(draws=1000, tune=2000, chains=4, cores=4, random_seed=SEED0 + k + (0 if scenario == "truth" else 5000),
-                        target_accept=0.9, progressbar=False)
+        raw = pm.sample(draws=draws, tune=tune, chains=4, cores=4, random_seed=SEED0 + k + (0 if scenario == "truth" else 5000),
+                        target_accept=0.9, progressbar=False, compute_convergence_checks=False)
     p = raw["posterior"].to_dataset()
     u = p["u"].stack(s=("chain", "draw")).values
     b0 = p["b0"].stack(s=("chain", "draw")).values
@@ -105,6 +108,13 @@ def replicate(scenario, k):
     res = {
         "scenario": scenario, "rep": k, "draw": s, "elapsed_min": round((time.time() - t0) / 60, 1),
         "divergences": int(raw["sample_stats"].to_dataset()["diverging"].sum()),
+        "seed_generator": SEED0 + (0 if scenario == "truth" else 100000) + k,
+        "seed_sampler": SEED0 + k + (0 if scenario == "truth" else 5000),
+        "draws": draws, "tune": tune, "chains": 4,
+        "max_rhat_hyper": float(az.rhat(raw, var_names=["b0","beta","sigma_u","rho"]).to_dataset().to_array().max()),
+        "min_ess_bulk_hyper": float(az.ess(raw, var_names=["b0","beta","sigma_u","rho"]).to_dataset().to_array().min()),
+        "max_rhat_u": float(az.rhat(raw, var_names=["u"])["u"].max()),
+        "min_ess_bulk_u": float(az.ess(raw, var_names=["u"])["u"].min()),
         "n_flag": int(flag.sum()), "tp": int((flag & gt110).sum()), "fp": int((flag & ~gt110).sum()),
         "n_true_gt110": int(gt110.sum()), "n_true_gt125": int(gt125.sum()),
         "flagged_of_true_gt110": int((flag & gt110).sum()), "flagged_of_true_gt125": int((flag & gt125).sum()),

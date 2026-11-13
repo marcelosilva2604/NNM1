@@ -33,7 +33,7 @@ from shapely.geometry import Point
 
 HERE = Path(__file__).resolve().parent
 V2 = HERE.parent
-A1 = V2.parent
+A1 = V2.parent  # repository root; raw inputs under data/ (not distributed)
 
 # Nazária (PI), emancipated from Teresina in 2008, is absent from the mesh; coordinates are
 # the median of its eight CNES establishments.

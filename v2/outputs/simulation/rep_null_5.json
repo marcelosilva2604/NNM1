@@ -1,9 +1,18 @@
 {
  "scenario": "null",
  "rep": 5,
- "draw": 2657,
- "elapsed_min": 1.5,
+ "draw": 10631,
+ "elapsed_min": 1.9,
  "divergences": 0,
+ "seed_generator": 20361021,
+ "seed_sampler": 20266021,
+ "draws": 4000,
+ "tune": 4000,
+ "chains": 4,
+ "max_rhat_hyper": 1.1102484073941568,
+ "min_ess_bulk_hyper": 26.009080290054513,
+ "max_rhat_u": 1.173984658326186,
+ "min_ess_bulk_u": 15.167983324320286,
  "n_flag": 0,
  "tp": 0,
  "fp": 0,
@@ -50,20 +59,20 @@
  "coverage_overall": 1.0,
  "coverage_strata": {
   "<20": {
-   "n": 3410,
-   "n_covered": 3410
+   "n": 3414,
+   "n_covered": 3414
   },
   "20-49": {
-   "n": 1215,
-   "n_covered": 1215
+   "n": 1207,
+   "n_covered": 1207
   },
   "50-199": {
-   "n": 744,
-   "n_covered": 744
+   "n": 746,
+   "n_covered": 746
   },
   ">=200": {
-   "n": 196,
-   "n_covered": 196
+   "n": 198,
+   "n_covered": 198
   }
  },
  "calibration": [
@@ -101,13 +110,13 @@
  "flagged_below": 0,
  "true_lt090": 0,
  "net_excess_true": 0.0,
- "net_excess_est_median": -12.844115898035025,
- "net_excess_est_lo95": -319.7898934805167,
- "net_excess_est_hi95": 315.8871854538229,
+ "net_excess_est_median": -17.82021852663302,
+ "net_excess_est_lo95": -372.6540603296454,
+ "net_excess_est_hi95": 224.64706073100047,
  "flagged_excess_true": 0.0,
  "flagged_excess_est_median": NaN,
  "flagged_excess_est_lo95": NaN,
  "flagged_excess_est_hi95": NaN,
  "sd_u_true": 0.0,
- "sd_u_est_median": 0.008585898322217076
+ "sd_u_est_median": 0.00667879582089617
 }

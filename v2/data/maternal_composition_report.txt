@@ -19,4 +19,4 @@ national shares (known denominators):
   born in a NICU municipality      : 0.689
 
 missingness: age 0.0000, schooling 0.0121, race 0.0362, visits 0.0053, gestation 0.0157, weight 0.0003
-elapsed 11s
+elapsed 0s

@@ -26,6 +26,7 @@ import time
 from pathlib import Path
 
 import arviz as az
+import nc_io
 import numpy as np
 import pandas as pd
 import pymc as pm
@@ -94,11 +95,15 @@ def fit_period(df, W, scaling, period, draws=1000, tune=2000, chains=4):
     t0 = time.time()
     with fm.build(df, W, scaling, fm.SPECS["bym2_rsr_full"]):
         raw = pm.sample(draws=draws, tune=tune, chains=chains, cores=chains, random_seed=fm.SEED + period,
-                        target_accept=0.9, progressbar=False)
+                        target_accept=0.9, progressbar=False, compute_convergence_checks=False)
     ds = raw["posterior"].to_dataset()[["b0", "beta", "sigma_u", "rho", "u"]]
     ds["u"] = ds["u"].astype("float32")
     idata = xr.DataTree.from_dict({"posterior": ds, "sample_stats": raw["sample_stats"].to_dataset()})
-    idata.to_netcdf(MODEL / f"idata_period{period}.nc", engine="h5netcdf")
+    nc_io.save(idata, MODEL / f"idata_period{period}.nc")
+    fm.summarise(idata, df, f"period{period}", fm.SPECS["bym2_rsr_full"], time.time() - t0, draws, tune, chains)
+    meta_path = MODEL / f"fit_period{period}.json"
+    meta = json.loads(meta_path.read_text()); meta["seed"] = fm.SEED + period
+    meta_path.write_text(json.dumps(meta, indent=2))
     info = {"divergences": int(idata["sample_stats"]["diverging"].sum()),
             "max_rhat_u": float(az.rhat(idata, var_names=["u"])["u"].max()),
             "elapsed_min": round((time.time() - t0) / 60, 1)}
@@ -138,11 +143,15 @@ def main():
     res, frames = {}, {}
     for p in PERIODS:
         frames[p] = period_frame(base, p, dy, births, pop, comp)
+        frames[p].to_csv(DATA / f"analysis_period{p}.csv", index=False)
         path = MODEL / f"idata_period{p}.nc"
         if path.exists():
-            idata = az.from_netcdf(path)
+            idata = nc_io.load(path)
             prev = ROOT / "outputs" / "period_persistence.json"
             info = json.loads(prev.read_text()).get("fit", {}).get(str(p), {"cached": True}) if prev.exists() else {"cached": True}
+            fitpath = MODEL / f"fit_period{p}.json"
+            if fitpath.exists():
+                info = {k: v for k, v in json.loads(fitpath.read_text()).items() if k != "hyper"}
         else:
             idata, info = fit_period(frames[p], W, scaling, p)
         u, E, sig, rho = draws_of(idata, frames[p])

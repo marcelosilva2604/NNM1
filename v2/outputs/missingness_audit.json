@@ -1,0 +1,125 @@
+{
+  "age_known": {
+    "missing_n": 771,
+    "missing_pct": 0.0025315659347496925,
+    "min_known": 58,
+    "n_muni_gt5pct": 0,
+    "max_pct": 0.6218905472636815,
+    "n_flagged_gt5pct": 0,
+    "max_width_flagged_pp": 0.6218905472636815
+  },
+  "esc_known": {
+    "missing_n": 368213,
+    "missing_pct": 1.209021384606989,
+    "min_known": 58,
+    "n_muni_gt5pct": 343,
+    "max_pct": 65.3819683413627,
+    "n_flagged_gt5pct": 14,
+    "max_width_flagged_pp": 19.728729963008632
+  },
+  "race_known": {
+    "missing_n": 1101219,
+    "missing_pct": 3.615834639557875,
+    "min_known": 53,
+    "n_muni_gt5pct": 1035,
+    "max_pct": 90.61140956766437,
+    "n_flagged_gt5pct": 26,
+    "max_width_flagged_pp": 21.578053484556264
+  },
+  "cons_known": {
+    "missing_n": 160625,
+    "missing_pct": 0.5274095697395192,
+    "min_known": 57,
+    "n_muni_gt5pct": 13,
+    "max_pct": 14.635124298315958,
+    "n_flagged_gt5pct": 0,
+    "max_width_flagged_pp": 4.377989173280076
+  },
+  "gest_known": {
+    "missing_n": 477241,
+    "missing_pct": 1.5670130457404383,
+    "min_known": 58,
+    "n_muni_gt5pct": 469,
+    "max_pct": 43.23374340949034,
+    "n_flagged_gt5pct": 17,
+    "max_width_flagged_pp": 18.82506284331068
+  },
+  "peso_known": {
+    "missing_n": 8603,
+    "missing_pct": 0.028247810293970953,
+    "min_known": 58,
+    "n_muni_gt5pct": 2,
+    "max_pct": 14.106901217861976,
+    "n_flagged_gt5pct": 1,
+    "max_width_flagged_pp": 14.106901217861976
+  },
+  "loc_known": {
+    "missing_n": 1396,
+    "missing_pct": 0.004583743248911246,
+    "min_known": 58,
+    "n_muni_gt5pct": 0,
+    "max_pct": 1.4948453608247423,
+    "n_flagged_gt5pct": 0,
+    "max_width_flagged_pp": 0.33475915938255535
+  },
+  "nasc_known": {
+    "missing_n": 0,
+    "missing_pct": 0.0,
+    "min_known": 58,
+    "n_muni_gt5pct": 0,
+    "max_pct": 0.0,
+    "n_flagged_gt5pct": 0,
+    "max_width_flagged_pp": 0.0
+  },
+  "flagged_union_n": 31,
+  "flagged_union_pct": 28.181818181818183,
+  "flagged_n": 110,
+  "zero_deaths": 88,
+  "selection": {
+    "age_lt20": {
+      "excluded_pct": 18.445751470404204,
+      "included_pct": 15.118113018203077
+    },
+    "esc_le7": {
+      "excluded_pct": 19.525032092426187,
+      "included_pct": 16.969180794054093
+    },
+    "race_nonwhite": {
+      "excluded_pct": 54.639042594260715,
+      "included_pct": 64.27514608707791
+    }
+  },
+  "age_affected_flagged": 13,
+  "period1_min_known": {
+    "age_known": 36,
+    "esc_known": 33,
+    "race_known": 28
+  },
+  "period2_min_known": {
+    "age_known": 22,
+    "esc_known": 22,
+    "race_known": 22
+  },
+  "map": {
+    "matched_municipalities": 5564,
+    "unmatched": [
+      "220672"
+    ],
+    "rr_above_colour_saturation_1p6": 5
+  },
+  "selection_flow": {
+    "raw_deaths": 260219,
+    "state_only_deaths": 196,
+    "identifiable_excluded_deaths": 58,
+    "included_deaths": 259965,
+    "raw_births": 30463522,
+    "state_only_births": 980,
+    "excluded_births": 8064,
+    "included_births": 30455458
+  },
+  "schooling_exactly_5pct_codes": [
+    "251593",
+    "314920",
+    "315070"
+  ]
+}

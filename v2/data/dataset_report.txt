@@ -31,7 +31,7 @@ Spearman correlation with the v1 SMR among municipalities with >= 50 deaths:
   idhm_educ            -0.134
   logpop               -0.279
   sh_age_lt20          +0.239
-  sh_age_ge35          -0.182
+  sh_age_ge35          -0.183
   sh_esc_le7           +0.154
   sh_nonwhite          +0.190
   sh_hospital          -0.167
