@@ -1,0 +1,113 @@
+{
+  "model": "bym2_rsr_full",
+  "spec": {
+    "X": [
+      "idhm_renda",
+      "idhm_educ",
+      "logpop",
+      "sh_age_lt20",
+      "sh_age_ge35",
+      "sh_esc_le7",
+      "sh_nonwhite"
+    ],
+    "prior": "bym2_rsr",
+    "outcome": "deaths_total",
+    "hr": false
+  },
+  "n": 5565,
+  "draws": 4000,
+  "tune": 4000,
+  "chains": 4,
+  "elapsed_s": 166.4,
+  "seed": 20261013,
+  "target_accept": 0.9,
+  "min_ess_tail_hyper": 2487.205220423797,
+  "min_ess_tail_u": 9346.33778452157,
+  "divergences": 0,
+  "max_rhat_hyper": 1.002441,
+  "min_ess_bulk_hyper": 1448.79997,
+  "max_rhat_u": 1.0015467539453813,
+  "min_ess_bulk_u": 7235.405433065566,
+  "hyper": {
+    "b0": {
+      "mean": -4.75925,
+      "sd": 0.004187,
+      "eti95_lb": -4.767507,
+      "eti95_ub": -4.751063,
+      "r_hat": 1.000076,
+      "ess_bulk": 23843.483307
+    },
+    "beta[idhm_renda]": {
+      "mean": -0.017459,
+      "sd": 0.006859,
+      "eti95_lb": -0.030959,
+      "eti95_ub": -0.004073,
+      "r_hat": 1.000145,
+      "ess_bulk": 14816.725372
+    },
+    "beta[idhm_educ]": {
+      "mean": 0.010596,
+      "sd": 0.007737,
+      "eti95_lb": -0.004504,
+      "eti95_ub": 0.025908,
+      "r_hat": 1.000284,
+      "ess_bulk": 18765.70067
+    },
+    "beta[logpop]": {
+      "mean": 0.002989,
+      "sd": 0.003763,
+      "eti95_lb": -0.004348,
+      "eti95_ub": 0.010373,
+      "r_hat": 0.999933,
+      "ess_bulk": 16368.126734
+    },
+    "beta[sh_age_lt20]": {
+      "mean": 0.058992,
+      "sd": 0.00808,
+      "eti95_lb": 0.043185,
+      "eti95_ub": 0.07479,
+      "r_hat": 1.000018,
+      "ess_bulk": 15751.13119
+    },
+    "beta[sh_age_ge35]": {
+      "mean": 0.013592,
+      "sd": 0.006732,
+      "eti95_lb": 0.000331,
+      "eti95_ub": 0.027013,
+      "r_hat": 1.000091,
+      "ess_bulk": 13340.954962
+    },
+    "beta[sh_esc_le7]": {
+      "mean": 0.025238,
+      "sd": 0.006211,
+      "eti95_lb": 0.012976,
+      "eti95_ub": 0.037471,
+      "r_hat": 1.000427,
+      "ess_bulk": 19168.895198
+    },
+    "beta[sh_nonwhite]": {
+      "mean": 0.069045,
+      "sd": 0.005673,
+      "eti95_lb": 0.057867,
+      "eti95_ub": 0.080115,
+      "r_hat": 1.000108,
+      "ess_bulk": 14896.330738
+    },
+    "sigma_u": {
+      "mean": 0.372019,
+      "sd": 0.018869,
+      "eti95_lb": 0.336752,
+      "eti95_ub": 0.41018,
+      "r_hat": 1.002236,
+      "ess_bulk": 1569.855046
+    },
+    "rho": {
+      "mean": 0.952199,
+      "sd": 0.011688,
+      "eti95_lb": 0.927053,
+      "eti95_ub": 0.972513,
+      "r_hat": 1.002441,
+      "ess_bulk": 1448.79997
+    }
+  }
+}
