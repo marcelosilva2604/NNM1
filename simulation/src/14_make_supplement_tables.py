@@ -51,7 +51,15 @@ for r in reps:
         z = agg.setdefault((r["k"], lab), [0, 0]); z[0] += v["n"]; z[1] += v["n_cov"]
 for lab in ["<20", "20-49", "50-199", ">=200"]:
     rows.append([lab] + [pct(agg[(k, lab)][1] / agg[(k, lab)][0]) for k in [0.0] + KS])
-out.append("**eTable 3.** Pooled coverage of the 95% credible interval for the residual RR, by generating expected deaths.\n\n" + md(pd.DataFrame(rows, columns=["Expected deaths", "k = 0"] + [f"k = {k}" for k in KS])))
+# coverage among flagged municipality-replicates (primary rule): pooled and mean of replicate-level values
+fl = {}
+for r in reps:
+    nf = r["rules"]["post_tau1.10_c0.95"]["n_flag"]
+    if nf and r["coverage_flagged"] is not None:
+        z = fl.setdefault(r["k"], [0, 0.0, []]); z[0] += nf; z[1] += r["coverage_flagged"] * nf; z[2].append(r["coverage_flagged"])
+rows.append(["Among flagged, pooled", "NA"] + [pct(fl[k][1] / fl[k][0]) for k in KS])
+rows.append(["Among flagged, mean of replicate-level values", "NA"] + [pct(sum(fl[k][2]) / len(fl[k][2])) for k in KS])
+out.append("**eTable 3.** Pooled coverage of the 95% credible interval for the residual RR, by generating expected deaths, and among flagged municipality-replicates under the primary rule.\n\n" + md(pd.DataFrame(rows, columns=["Stratum or subset", "k = 0"] + [f"k = {k}" for k in KS])))
 
 # eTable 4: convergence by k
 rows = []

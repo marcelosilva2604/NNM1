@@ -22,14 +22,16 @@
 | C2: Poisson tail test, p < 0.05 | 7.6% / 61.3% / 11,900 | 14.0% / 19.1% / 25,398 | 21.8% / 7.7% / 44,245 | 29.4% / 4.4% / 63,990 |
 | C3: Poisson tail test, BH 5% | 0.1% / 0.0% / 33 | 1.9% / 0.6% / 2,772 | 6.3% / 0.4% / 11,752 | 13.3% / 0.3% / 27,758 |
 
-**eTable 3.** Pooled coverage of the 95% credible interval for the residual RR, by generating expected deaths.
+**eTable 3.** Pooled coverage of the 95% credible interval for the residual RR, by generating expected deaths, and among flagged municipality-replicates under the primary rule.
 
-| Expected deaths | k = 0 | k = 0.5 | k = 1.0 | k = 1.5 | k = 2.0 |
+| Stratum or subset | k = 0 | k = 0.5 | k = 1.0 | k = 1.5 | k = 2.0 |
 |---|---|---|---|---|---|
 | <20 | 100.0% | 94.6% | 94.9% | 95.0% | 95.1% |
 | 20-49 | 100.0% | 94.6% | 95.0% | 95.0% | 95.0% |
 | 50-199 | 100.0% | 94.7% | 95.1% | 95.1% | 95.1% |
 | >=200 | 100.0% | 94.8% | 94.4% | 95.0% | 94.9% |
+| Among flagged, pooled | NA | 95.1% | 93.1% | 94.5% | 94.8% |
+| Among flagged, mean of replicate-level values | NA | 94.5% | 93.0% | 94.5% | 94.8% |
 
 **eTable 4.** Convergence diagnostics by scenario. The hyperparameter and municipal-effect R-hat were recorded only for replicates run after the plan amendment.
 

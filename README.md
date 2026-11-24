@@ -14,12 +14,15 @@ simulation/
   src/11_simulation_grid.py      one replicate (--k, --rep) or aggregation (--aggregate)
   src/12_sensitivity_W.py        refits with alternative neighborhood graphs
   src/13_sensW_diagnostics.py    graph and divergence diagnostics for those refits
-  src/14_make_supplement_tables.py, src/15_make_figure1.py
+  src/14_make_supplement_tables.py  supplementary tables from the grid outputs (outputs/supp_tables.md)
+  src/15_make_figure1.py         Figure 2: sensitivity and false-flag proportion by expected count
+  src/19_make_figures_2_3.py     Figure 3 (operating points of the rules) and Figure 1 (map; needs the polygon files, see below)
   jobs.txt, run_grid.sh, run.sh  resumable grid driver (4 fits at a time)
   outputs/grid/                  one JSON per replicate (k = 0 has 40, the other scenarios 100)
   outputs/grid_null_initial/     the initial null replicates run before the plan amendment
   outputs/grid_summary.csv, grid_calibration.csv, grid_replicate_meta.csv, supp_tables.md
   outputs/sens_W/                neighborhood-graph refits (fit_*.json, muni_*.csv, diag/)
+  outputs/Figure_1..3.png/pdf    figures: 1 = map of the registry application, 2 = sensitivity by expected count, 3 = operating points
 ANALYSIS_PLAN.md       plan written before the simulation was run, with its single amendment
 ```
 
@@ -28,7 +31,7 @@ ANALYSIS_PLAN.md       plan written before the simulation was run, with its sing
 1. Install the versions in `requirements.txt` (Python 3.12).
 2. Fit the primary model: `python primary_fit/src/04_fit_models.py bym2_rsr_full` (4 chains, 4000 tuning and 4000 retained draws; about 3 minutes on 16 cores). The posterior file is about 340 MB and is not in this repository. A refit may not return the same draws as the one used for the reported results; the replicate JSON files record the index of the posterior draw used (`draw`).
 3. Run the grid: `simulation/run_grid.sh` (resumable), then `python simulation/src/11_simulation_grid.py --aggregate`.
-4. Tables and figure: `python simulation/src/14_make_supplement_tables.py` and `python simulation/src/15_make_figure1.py`.
+4. Tables and figures: `python simulation/src/14_make_supplement_tables.py`, `python simulation/src/15_make_figure1.py` (Figure 2), and `python simulation/src/19_make_figures_2_3.py` (Figure 3). Figure 1 (map) additionally needs the IBGE municipal and state polygon files, which are not in this repository: set `MUNI_GEOJSON` and `STATES_GEOJSON` to them (feature id = 7-digit IBGE code) and `PRIMARY_MUNI=primary_fit/model/muni_bym2_rsr_full.csv` before running the script.
 
 The scripts read the primary fit from `primary_fit/` by default; set `NNM1_ROOT` to use another location.
 
@@ -36,6 +39,7 @@ The scripts read the primary fit from `primary_fit/` by default; set `NNM1_ROOT`
 
 - The scripts that build the municipal table from individual-level registry extracts, because they read individual-level files. The resulting aggregated table is provided.
 - The posterior file of the primary fit (size).
+- The municipal and state polygon files used for the map (Figure 1).
 
 ## Notes on the outputs
 
